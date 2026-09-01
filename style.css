@@ -1,0 +1,93 @@
+body {
+    display: grid;
+    place-items: center;
+    height: 20vh;
+    margin: 0;
+    padding: 0;
+    background-color: #776363;
+    user-select: none;
+}
+
+.main{
+    display: flex;
+    gap: 200px;
+}
+
+.left h3 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+.gem-image {
+    width: 250px;  
+}
+
+.gem-image:hover {
+    opacity: 0.9;
+    cursor: pointer;
+
+}
+
+.gem-image:active {
+    opacity: 0.8;
+    transform: scale(1.02);
+
+}
+
+.braco-image {
+    width: 100px;
+}
+
+
+.frango-img {
+    width: 60px;
+}
+
+.upgrade {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 320px;
+   height: 60px;
+   border: 4px solid white; 
+   padding: 10px;
+   border-radius: 20px;
+
+}
+
+.mid-section h4{
+    margin: 0px;
+    margin-bottom: 10px;
+    font-size:25px;
+    margin-top: 10px;
+}
+
+.mid-section {
+    margin: 5;
+}
+
+.preco-info {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.preco-braco {
+    width: 20px;
+}
+
+.braco-img {
+    width: 20px;
+    height: 20px;
+}
+
+.braco-img:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+}
