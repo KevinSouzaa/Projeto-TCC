@@ -1,7 +1,7 @@
 body {
     display: grid;
     place-items: center;
-    height: 20vh;
+    height: 100vh;
     margin: 0;
     padding: 0;
     background-color: #776363;
@@ -10,6 +10,7 @@ body {
 
 .main{
     display: flex;
+    flex-direction: row-reverse;
     gap: 200px;
 }
 
@@ -19,17 +20,17 @@ body {
     margin-bottom: 50px;
 }
 
-.gem-image {
+.boneco-image {
     width: 250px;  
 }
 
-.gem-image:hover {
+.boneco-image:hover {
     opacity: 0.9;
     cursor: pointer;
 
 }
 
-.gem-image:active {
+.boneco-image:active {
     opacity: 0.8;
     transform: scale(1.02);
 
@@ -48,6 +49,8 @@ body {
    display: flex;
    align-items: center;
    justify-content: space-between;
+   transform: translateX(-450px);
+   
    width: 320px;
    height: 60px;
    border: 4px solid white; 
@@ -89,5 +92,5 @@ body {
 
 .right {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
