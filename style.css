@@ -8,6 +8,18 @@ body {
     user-select: none;
 }
 
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    background-color: aqua;
+    top: 0;
+    z-index: 100;
+    border: 1px solid #ddd;
+}
+
 .main{
     display: flex;
     flex-direction: row-reverse;
