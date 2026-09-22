@@ -1,3 +1,6 @@
+/* Reseta os padrões de estilização de box do navegador */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
     display: grid;
     place-items: center;
@@ -13,11 +16,61 @@ header{
     align-items: center;
     justify-content: space-between;
     position: fixed;
+    height: 80px;
     width: 100%;
-    background-color: aqua;
-    top: 0;
+    top: 0;    
+    background-color: rgb(255, 255, 255, 0.65);
+    backdrop-filter: blur(6px);
     z-index: 100;
     border: 1px solid #ddd;
+}
+
+.botoes{
+    display: flex;
+    justify-content: space-between;
+    width: 1800px;
+ }
+
+ .botoes-header #bot-esquerda{
+   height: 30px;
+    width: 100px;
+    color: aliceblue;
+    background-color:rgb(13, 19, 17);
+    border-radius: 10%;
+    cursor: pointer;
+ }
+
+ .botoes-header #bot-direita{
+    position: absolute;
+    left: 1800px;
+    height: 30px;
+    width: 100px;
+    color: aliceblue;
+    background-color:rgb(13, 19, 17);
+    border-radius: 10%;
+    cursor: pointer;
+ }
+
+ .moeda h3 {
+    position: absolute;
+    left: 1000px;
+    top: 20px;
+}
+
+.braco-image {
+    width: 35px;
+    height: 35px;
+}
+
+.barra-prog h4{
+    position: absolute;
+    left: 590px;
+    top: 21px;
+    width: 400px;
+    height: 38px;
+    background-color: blue;
+    text-align: center;
+    padding-top: 10px;
 }
 
 .main{
@@ -45,29 +98,26 @@ header{
 .boneco-image:active {
     opacity: 0.8;
     transform: scale(1.02);
-
 }
-
-.braco-image {
-    width: 100px;
-}
-
 
 .frango-img {
     width: 60px;
 }
+
+
 
 .upgrade {
    display: flex;
    align-items: center;
    justify-content: space-between;
    transform: translateX(-450px);
-   
+   background-color: aquamarine;
    width: 320px;
    height: 60px;
    border: 4px solid white; 
    padding: 10px;
    border-radius: 20px;
+   cursor: pointer;
 
 }
 
@@ -79,7 +129,7 @@ header{
 }
 
 .mid-section {
-    margin: 5;
+    margin: 5px;
 }
 
 .preco-info {
