@@ -154,7 +154,8 @@ header{
 
 .right {
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
 }
 
 #overlay-configuracoes {

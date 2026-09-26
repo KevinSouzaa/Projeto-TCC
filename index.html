@@ -31,22 +31,45 @@
              <img src="./foto/Personagem Fraco-1.png" alt="" srcset="" class="boneco-image" onclick="incrementGem()" draggable="false">
             </div>
             <div class="right">
-             <div class="upgrade" onclick="comprarFrango()">
-                <div class="left-section">
-                    <img src="./foto/frango.png" alt="" class="frango-img">
-                </div>
+                <!--Upgrade do Frango-->
+                <div class="upgrade" onclick="comprarUpgrade('frango')">
+                    <div class="left-section">
+                        <img src="./foto/frango.png" alt="" class="frango-img">
+                    </div>
 
-                <div class="mid-section">
-                    <h4>Frango</h4>
-                    <div class="preco-info">
-                        <p>Preço: <span class="clicker-preco">10</span> </p>
-                        <img src="./foto/braco.png" alt="" class="braco-img">
+                    <div class="mid-section">
+                        <h4>Frango</h4>
+
+                        <div class="preco-info">
+                            <p>Preço: <span id="preco-frango">10</span> </p>
+                            <img src="./foto/braco.png" alt="" class="braco-img">
+                        </div>
+                    </div>
+
+                    <div class="right-section">
+                        <span id="nivel-frango">0</span>
                     </div>
                 </div>
-                <div class="right-section">
-                    Level
+                
+                <!--Upgrade do Suplemento-->
+                <div class="upgrade" onclick="comprarUpgrade('suplemento')">
+                    <div class="left-section">
+                        <img src="./foto/frango.png" alt="" class="suplemento-img">
+                    </div>
+
+                    <div class="mid-section">
+                        <h4>Suplemento</h4>
+
+                        <div class="preco-info">
+                            <p>Preço: <span id="preco-suplemento">20</span> </p>
+                            <img src="./foto/braco.png" alt="" class="braco-img">
+                        </div>
+                    </div>
+
+                    <div class="right-section">
+                        <span id="nivel-suplemento">0</span>
+                    </div>
                 </div>
-             </div>
             </div>
         </div>
     </section>
