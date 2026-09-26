@@ -24,7 +24,7 @@ let tempoAnimacao;
 personagemImg.addEventListener("click", function(){
     personagemImg.src = imgClicado;
 
-    // 2. Reseta o tempo caso o jogador clique muito rápido
+    // 2. Reseta o tempo caso o jogador clique muito rápido / Não entendi a utilidade??
     //clearTimeout(tempoAnimacao);
 
     tempoAnimacao = setTimeout(() => {
