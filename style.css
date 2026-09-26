@@ -157,20 +157,48 @@ header{
     align-items: flex-start;
 }
 
-#configuracoes {
-    /*display: none;*/
+#overlay-configuracoes {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* Deixa o fundo do jogo escurinho */
+    z-index: 998; /* Fica acima do jogo */
+}
+
+/* Exibe o overlay quando receber a classe mostrar */
+#overlay-configuracoes.mostrar {
+    display: block;
+}
+
+#configuracoes.mostrar {
+    display: flex;
+    flex-direction: column; /* Empilha os elementos verticalmente */
+    align-items: center;    /* Centraliza os itens no menu */
+    gap: 10px;              /* Adiciona um espaço uniforme entre os botões */
 }
 
 #configuracoes {
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px;
+
+    /* Configurações de Responsividade */
+    width: 90%;             /* Ocupa 90% da tela em dispositivos menores */
+    max-width: 400px;       /* Trava em 400px para não ficar gigante em monitores grandes */
+    box-sizing: border-box; /* Garante que o padding não seja somado ao tamanho total da caixa */
+    max-height: 90vh;       /* Limita a altura a 90% da tela para não cortar em monitores baixos */
+    overflow-y: auto;       /* Adiciona rolagem interna caso tenha muitas opções e passe da altura */
+    
     padding: 30px;
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    z-index: 999;
 }
 
 #configuracoes button {
@@ -185,19 +213,10 @@ header{
 
 #configuracoes #fechar-config {
     position: absolute;
-    top: 25px;
-    left: 355px;
+    top: 15px;
+    right: 15px;
     background-color:red;
     width: 25px;
     height: 25px;
-}
-
-.botoes-config {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.botoes-config button {
-    width: 200px;
+    cursor: pointer;
 }
