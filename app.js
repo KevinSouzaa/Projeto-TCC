@@ -29,7 +29,7 @@ personagemImg.addEventListener("click", function(){
 
     tempoAnimacao = setTimeout(() => {
         personagemImg.src = imgNormal;
-    }, 150);
+    }, 180);
 })
 
 function incrementGem() {
