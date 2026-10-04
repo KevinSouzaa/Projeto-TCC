@@ -1,80 +1,57 @@
 // Moedas
-let moeda_musculo = document.querySelector('.moeda-custo');
-let moedas = 0;
-
-// Botões de abrir e fechar as configurações
-const btn_AbrirConfig = document.getElementById("btn-direita")
-const btn_fecharConfig = document.getElementById("btn-fechar-config");
-
-// Menu e overlay de configurações
-const boxconfig = document.getElementById("configuracoes")
-const overlayConfig = document.getElementById('overlay-configuracoes');
-
-// Imagem principal do Personagem
-const personagemImg = document.querySelector('.boneco-image');
-const imgNormal = `${image_path.personagem}Fraco_1.png`;
-
-// Imagem do personagem após clicar na tela
-const imgClicado = `${image_path.personagem}Fraco_2.png`;
-
-let tempoAnimacao;
+let moedaMusculo = document.querySelector('.moeda-custo');
+let moedasMusculoPorSegundo = 0;
+let moedaMusculoTotal = 0;
 
 
-// Troca as imagens do personagem ao clicar
-personagemImg.addEventListener("click", function(){
-    personagemImg.src = imgClicado;
 
-    // 2. Reseta o tempo caso o jogador clique muito rápido / Não entendi a utilidade??
-    //clearTimeout(tempoAnimacao);
+// Funções para atualizar a tela
 
-    tempoAnimacao = setTimeout(() => {
-        personagemImg.src = imgNormal;
-    }, 180);
-})
-
-function incrementarMoeda() {
-    moedas += 1;
-    atualizarTela();
+function atualizarTelaClick() {
+    moedaMusculo.innerHTML = moedaMusculoTotal;
 }
 
-
-function comprarUpgrade(idDoUpgrade) {
-    let item = upgrades[idDoUpgrade];
-
-    if (moedas >= item.custo) {
-        moedas -= item.custo;
-        item.nivel += 1;
-
-        item.custo = Math.floor(item.custo * item.multiplicador);
-    }
-
-    atualizarTela();
-}
-
-function atualizarTela() {
-    moeda_musculo.innerHTML = moedas;
+function atualizarTelaUpgrade() {
     
+    atualizarTelaClick();
+
     for (let id in upgrades) {
         let item = upgrades[id];
         item.elementoPreco.innerHTML = item.custo;
         item.elementoNivel.innerHTML = item.nivel;
     }
+} 
+
+
+// Funções para incremento de moeda
+
+function incrementarMoeda(nivelIncremetno = 1) {
+    moedaMusculoTotal += nivelIncremetno;
+    atualizarTelaClick();
 }
 
-function abrirMenu(){
-    boxconfig.classList.add("mostrar");
-    overlayConfig.classList.add("mostrar")
-    
-}
-    
 
-function fecharMenu(){
-    boxconfig.classList.remove("mostrar");
-    overlayConfig.classList.remove("mostrar")
+setInterval(() => {
+    moedaMusculoTotal += moedasMusculoPorSegundo;
+    atualizarTelaClick();
+}, 1000);
+
+
+// Funções para comprar upgrades
+
+function comprarUpgrade(idDoUpgrade, valorSelecionado = 1) {
+    let item = upgrades[idDoUpgrade];
+
+    if (moedaMusculoTotal >= item.custo) { // Arrumar com X numeros de upgrades comprados
+        moedaMusculoTotal -= item.custo;
+        item.nivel += valorSelecionado; // Arrumar com X numeros de upgrades comprados
+        item.custo = Math.floor(item.custo * item.multiplicadorCusto);
+        item.moedasPorSegundo = Math.floor(item.moedasPorSegundo * item.multiplicadorMoedasPorSegundo);
+        moedasMusculoPorSegundo += Math.floor(item.moedasPorSegundo); // Arrumar com X numeros de upgrades comprados
+    }
+
+    atualizarTelaUpgrade();
 }
 
-btn_AbrirConfig.addEventListener("click", abrirMenu);
-btn_fecharConfig.addEventListener("click", fecharMenu);
-    
 
 
