@@ -1,10 +1,10 @@
 // Moedas
-let gem = document.querySelector('.gem-cost')
+let moeda_musculo = document.querySelector('.moeda-custo');
 let moedas = 0;
 
 // Botões de abrir e fechar as configurações
-const btn_AbrirConfig = document.getElementById("bot-direita")
-const btn_fecharConfig = document.getElementById("fechar-config");
+const btn_AbrirConfig = document.getElementById("btn-direita")
+const btn_fecharConfig = document.getElementById("btn-fechar-config");
 
 // Menu e overlay de configurações
 const boxconfig = document.getElementById("configuracoes")
@@ -12,10 +12,10 @@ const overlayConfig = document.getElementById('overlay-configuracoes');
 
 // Imagem principal do Personagem
 const personagemImg = document.querySelector('.boneco-image');
-const imgNormal = './foto/Personagem Fraco-1.png';
+const imgNormal = `${image_path.personagem}Fraco_1.png`;
 
 // Imagem do personagem após clicar na tela
-const imgClicado = "./foto/Personagem Fraco-2.png";
+const imgClicado = `${image_path.personagem}Fraco_2.png`;
 
 let tempoAnimacao;
 
@@ -32,28 +32,10 @@ personagemImg.addEventListener("click", function(){
     }, 180);
 })
 
-function incrementGem() {
+function incrementarMoeda() {
     moedas += 1;
     atualizarTela();
 }
-
-const upgrades = {
-    frango: {
-        custo: 10,
-        nivel: 0,
-        multiplicador: 1.5, // O preço aumenta 50% a cada compra
-        elementoPreco: document.getElementById('preco-frango'),
-        elementoNivel: document.getElementById('nivel-frango')
-    },
-
-    suplemento: {
-        custo: 20,
-        nivel: 0,
-        multiplicador: 1.8, // O preço aumenta 50% a cada compra
-        elementoPreco: document.getElementById('preco-suplemento'),
-        elementoNivel: document.getElementById('nivel-suplemento')
-    }
-};
 
 
 function comprarUpgrade(idDoUpgrade) {
@@ -70,7 +52,7 @@ function comprarUpgrade(idDoUpgrade) {
 }
 
 function atualizarTela() {
-    gem.innerHTML = moedas;
+    moeda_musculo.innerHTML = moedas;
     
     for (let id in upgrades) {
         let item = upgrades[id];

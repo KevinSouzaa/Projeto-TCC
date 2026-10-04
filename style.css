@@ -31,7 +31,7 @@ header{
     width: 1800px;
  }
 
- .botoes-header #bot-esquerda{
+ .botoes-header #btn-esquerda{
    height: 30px;
     width: 100px;
     color: aliceblue;
@@ -40,7 +40,7 @@ header{
     cursor: pointer;
  }
 
- .botoes-header #bot-direita{
+ .botoes-header #btn-direita{
     position: absolute;
     left: 1800px;
     height: 30px;
@@ -62,7 +62,7 @@ header{
     height: 35px;
 }
 
-.barra-prog h4{
+.barra-prog-rebirth h4{
     position: absolute;
     left: 590px;
     top: 21px;

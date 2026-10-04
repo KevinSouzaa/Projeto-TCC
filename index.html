@@ -9,18 +9,18 @@
 <body>
 
     <header>
-        <a href="#" class="logo"><img src="./foto/frango.png" alt=""></a>
+        <a href="#" class="logo"><img src="sprites/upgrades/frango.png" alt=""></a>
             <section class="botoes-header">
                 <div class="botoes">
-                    <button id="bot-esquerda">Estatísticas</button>
-                    <button id="bot-direita">Configurações</button>
+                    <button id="btn-esquerda">Estatísticas</button>
+                    <button id="btn-direita">Configurações</button>
                 </div>
 
             </section>
                 <div class="moeda">
-                        <h3><img src="./foto/braco.png" alt="" class="braco-image" draggable="false"> <span class="gem-cost">0</span></h3>
+                        <h3><img src="sprites/moedas/braco.png" alt="" class="braco-image" draggable="false"> <span class="moeda-custo">0</span></h3>
                 </div>
-                <div class="barra-prog">
+                <div class="barra-prog-rebirth">
                     <h4>Rebirth</h4>
                 </div>
     </header>
@@ -28,13 +28,13 @@
     <section>
         <div class="main">
             <div class="left">
-             <img src="./foto/Personagem Fraco-1.png" alt="" srcset="" class="boneco-image" onclick="incrementGem()" draggable="false">
+             <img src="sprites/personagem/Fraco_1.png" alt="" srcset="" class="boneco-image" onclick="incrementarMoeda()" draggable="false">
             </div>
             <div class="right">
                 <!--Upgrade do Frango-->
                 <div class="upgrade" onclick="comprarUpgrade('frango')">
                     <div class="left-section">
-                        <img src="./foto/frango.png" alt="" class="frango-img">
+                        <img src="sprites/upgrades/frango.png" alt="" class="frango-img">
                     </div>
 
                     <div class="mid-section">
@@ -42,7 +42,7 @@
 
                         <div class="preco-info">
                             <p>Preço: <span id="preco-frango">10</span> </p>
-                            <img src="./foto/braco.png" alt="" class="braco-img">
+                            <img src="sprites/moedas/braco.png" alt="" class="braco-img">
                         </div>
                     </div>
 
@@ -54,7 +54,7 @@
                 <!--Upgrade do Suplemento-->
                 <div class="upgrade" onclick="comprarUpgrade('suplemento')">
                     <div class="left-section">
-                        <img src="./foto/frango.png" alt="" class="suplemento-img">
+                        <img src="sprites/upgrades/frango.png" alt="" class="suplemento-img">
                     </div>
 
                     <div class="mid-section">
@@ -62,7 +62,7 @@
 
                         <div class="preco-info">
                             <p>Preço: <span id="preco-suplemento">20</span> </p>
-                            <img src="./foto/braco.png" alt="" class="braco-img">
+                            <img src="sprites/moedas/braco.png" alt="" class="braco-img">
                         </div>
                     </div>
 
@@ -82,25 +82,27 @@
         <div id="configuracoes">
             <h2>Configurações</h2>
 
-             <button id="fechar-config">X</button>
+             <button id="btn-fechar-config">X</button>
 
             <div>
                 <label>
-                    <button id="bot-som">Som</button>
+                    <button id="btn-som">Som</button>
                 </label>
             </div>
             <div>
                 <label>
-                    <button id="bot-salvamento">Salvamento</button>
+                    <button id="btn-salvamento">Salvamento</button>
                 </label>
             </div>
             <div>
                 <label>
-                    <button id="bot-excluirsalvamento">Excluir Salvamento</button>
+                    <button id="btn-excluirsalvamento">Excluir Salvamento</button>
                 </label>
             </div>
         </div>
     </section>
-    <script src="app.js"></script>
+    <script src="js/sprites.js"></script>
+    <script src="js/upgrades.js"></script>
+    <script src="js/app.js"></script> <!--Sempre o ultimo, pois depende da coisa dos de cima-->
 </body>
 </html>
