@@ -9,7 +9,7 @@
 <body>
 
     <header>
-        <a href="#" class="logo"><img src="sprites/upgrades/frango.png" alt=""></a>
+        <a href="#" class="logo"><img src="sprites/upgrades/frango_1.png" alt=""></a>
             <section class="botoes-header">
                 <div class="botoes">
                     <button id="btn-esquerda">Estatísticas</button>
@@ -30,11 +30,10 @@
             <div class="left">
              <img src="sprites/personagem/Fraco_1.png" alt="" srcset="" class="boneco-image" onclick="incrementarMoeda()" draggable="false">
             </div>
-            <div class="right">
-                <!--Upgrade do Frango-->
+            <div id = "lojaUpgrades" class="right">  <!--Seção de Upgrades-->
                 <div class="upgrade" onclick="comprarUpgrade('frango')">
                     <div class="left-section">
-                        <img src="sprites/upgrades/frango.png" alt="" class="frango-img">
+                        <img src="sprites/upgrades/frango_1.png" alt="" class="upgrade-img">
                     </div>
 
                     <div class="mid-section">
@@ -48,26 +47,6 @@
 
                     <div class="right-section">
                         <span id="nivel-frango">0</span>
-                    </div>
-                </div>
-                
-                <!--Upgrade do Suplemento-->
-                <div class="upgrade" onclick="comprarUpgrade('suplemento')">
-                    <div class="left-section">
-                        <img src="sprites/upgrades/frango.png" alt="" class="suplemento-img">
-                    </div>
-
-                    <div class="mid-section">
-                        <h4>Suplemento</h4>
-
-                        <div class="preco-info">
-                            <p>Preço: <span id="preco-suplemento">20</span> </p>
-                            <img src="sprites/moedas/braco.png" alt="" class="braco-img">
-                        </div>
-                    </div>
-
-                    <div class="right-section">
-                        <span id="nivel-suplemento">0</span>
                     </div>
                 </div>
             </div>

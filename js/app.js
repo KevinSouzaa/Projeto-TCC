@@ -17,8 +17,8 @@ function atualizarTelaUpgrade() {
 
     for (let id in upgrades) {
         let item = upgrades[id];
-        item.elementoPreco.innerHTML = item.custo;
-        item.elementoNivel.innerHTML = item.nivel;
+        document.getElementById(`preco-${id}`).textContent = item.custo;
+        document.getElementById(`nivel-${id}`).textContent = item.nivel;
     }
 } 
 
@@ -47,10 +47,10 @@ function comprarUpgrade(idDoUpgrade, valorSelecionado = 1) {
         item.nivel += valorSelecionado; // Arrumar com X numeros de upgrades comprados
         item.custo = Math.floor(item.custo * item.multiplicadorCusto);
         item.moedasPorSegundo = Math.floor(item.moedasPorSegundo * item.multiplicadorMoedasPorSegundo);
-        moedasMusculoPorSegundo += Math.floor(item.moedasPorSegundo); // Arrumar com X numeros de upgrades comprados
+        moedasMusculoPorSegundo += Math.floor(item.moedasPorSegundo); // Arrumar com X numeros de upgrades comprados 
+        mostrarNovoUpgrade();
+        atualizarTelaUpgrade();
     }
-
-    atualizarTelaUpgrade();
 }
 
 
