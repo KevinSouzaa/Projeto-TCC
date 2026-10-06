@@ -17,3 +17,26 @@ personagemImg.addEventListener("click", function(){
         personagemImg.src = imgNormal;
     }, 180);
 })
+
+
+
+// Upgrades -Unlock e Movimento
+
+const framesUpgradeComprados = []
+
+
+let frameAtual = 0
+
+// Animação dos upgrades comprados
+
+setInterval(() => {
+    framesUpgradeComprados.forEach((framesUp) => {
+        framesUp.elemento.src = framesUp.frames[frameAtual]
+    })
+    if (frameAtual == 0){
+        frameAtual = 1
+    }
+    else{
+        frameAtual = 0
+    }
+}, 1000);

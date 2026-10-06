@@ -50,7 +50,7 @@ const upgrades = {
         moedasPorSegundo: 100,
         multiplicadorMoedasPorSegundo: 1.1,
 
-        locking: "sprites/upgrades/GARRAFA_DE_AGUA_lock.png",
+        locking: "sprites/upgrades/GARRAFA_AGUA_lock.png",
         img1: "sprites/upgrades/garrafa_agua_1.png",
         img2: "sprites/upgrades/garrafa_agua_2.png"
     },
@@ -87,39 +87,39 @@ const upgrades = {
 };
 
 
-upgradesNaLoja = ["Frango"]
-console.log(upgradesNaLoja)
+
+const upgradesLateral = ["frango"];
 
 function mostrarNovoUpgrade() {
     lojaUpgrades = "";
     for (const upgrade in upgrades){
-        if (!upgradesNaLoja.includes(upgrade)) {
+        if (!upgradesLateral.includes(upgrade)) {
             lojaUpgrades += `
                 <div class="upgrade" onclick="comprarUpgrade('${upgrade}')">
                     <div class="left-section">
-                        <img src="${upgrades[upgrade].img1}" alt="" class="upgrade-img">
+                        <img src="${upgrades[upgrade].locking}" alt="" id="${upgrade}-img" class="upgrade-img">
                     </div>
 
                     <div class="mid-section">
                         <h4>${upgrades[upgrade].nome}</h4>
 
                         <div class="preco-info">
-                            <p>Preço: <span id="preco-${upgrade}">10</span> </p>
+                            <p>Preço: <span id="preco-${upgrade}">${upgrades[upgrade].custo}</span> </p>
                             <img src="sprites/moedas/braco.png" alt="" class="braco-img">
                         </div>
                     </div>
 
                     <div class="right-section">
-                        <span id="nivel-${upgrade}">0</span>
+                        <span id="nivel-${upgrade}">${upgrades[upgrade].nivel}</span>
                     </div>
                 </div>
         
         `
-        upgradesNaLoja.push(upgrade);
+        upgradesLateral.push(upgrade);
         break;
         }
         
     }
-    document.getElementById("lojaUpgrades").innerHTML += lojaUpgrades;
+    document.getElementById("lojaUpgrades").insertAdjacentHTML("beforeend", lojaUpgrades) // Adiciona os novos elementos no final do html, e não faz toda a sobrescrição.
 }
 

@@ -11,21 +11,19 @@ function atualizarTelaClick() {
     moedaMusculo.innerHTML = moedaMusculoTotal;
 }
 
-function atualizarTelaUpgrade() {
-    
-    atualizarTelaClick();
+function atualizarTelaUpgrade(idDoUpgrade) {
 
-    for (let id in upgrades) {
-        let item = upgrades[id];
-        document.getElementById(`preco-${id}`).textContent = item.custo;
-        document.getElementById(`nivel-${id}`).textContent = item.nivel;
-    }
+    let item = upgrades[idDoUpgrade];
+        document.getElementById(`preco-${idDoUpgrade}`).textContent = item.custo;
+        document.getElementById(`nivel-${idDoUpgrade}`).textContent = item.nivel;
+
+    atualizarTelaClick();
 } 
 
 
 // Funções para incremento de moeda
 
-function incrementarMoeda(nivelIncremetno = 1) {
+function incrementarMoeda(nivelIncremetno = 1000000) {
     moedaMusculoTotal += nivelIncremetno;
     atualizarTelaClick();
 }
@@ -48,10 +46,24 @@ function comprarUpgrade(idDoUpgrade, valorSelecionado = 1) {
         item.custo = Math.floor(item.custo * item.multiplicadorCusto);
         item.moedasPorSegundo = Math.floor(item.moedasPorSegundo * item.multiplicadorMoedasPorSegundo);
         moedasMusculoPorSegundo += Math.floor(item.moedasPorSegundo); // Arrumar com X numeros de upgrades comprados 
-        mostrarNovoUpgrade();
-        atualizarTelaUpgrade();
+        
+        atualizarTelaUpgrade(idDoUpgrade);
+
+        if (!upgradesComprados.includes(idDoUpgrade)) {
+            mostrarNovoUpgrade();
+            adicionarUpgradeComprado(idDoUpgrade);
+        }
     }
 }
 
+function adicionarUpgradeComprado(idDoUpgrade) {
 
+    upgradesComprados.push(idDoUpgrade);
+
+    framesUpgradeComprados.push({
+        elemento: document.getElementById(`${idDoUpgrade}-img`),
+        frames: [upgrades[idDoUpgrade].img1, upgrades[idDoUpgrade].img2],
+        }
+    );
+}
 
