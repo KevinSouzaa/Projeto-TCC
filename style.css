@@ -85,7 +85,7 @@ header{
     gap: 200px;
 }
 
-.left h3 {
+.right h3 {
     text-align: center;
     font-size: 30px;
     margin-bottom: 50px;
@@ -158,7 +158,8 @@ header{
     cursor: pointer;
 }
 
-.right {
+
+.left {
     display: flex;
     flex-direction: column;
     gap: 15px;

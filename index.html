@@ -10,12 +10,12 @@
 
     <header>
         <a href="#" class="logo"><img src="sprites/upgrades/frango_1.png" alt=""></a>
+
             <section class="botoes-header">
                 <div class="botoes">
                     <button id="btn-esquerda">Estatísticas</button>
                     <button id="btn-direita">Configurações</button>
                 </div>
-
             </section>
                 <div class="moeda">
                         <h3><img src="sprites/moedas/braco.png" alt="" class="braco-image" draggable="false"> <span class="moeda-custo">0</span></h3>
@@ -27,10 +27,11 @@
 
     <section>
         <div class="main">
-            <div class="left">
+            <div class="right">
              <img src="sprites/personagem/Fraco_1.png" alt="" srcset="" class="boneco-image" onclick="incrementarMoeda()" draggable="false">
             </div>
-            <div id = "lojaUpgrades" class="right">  <!--Seção de Upgrades-->
+
+            <div id = "lojaUpgrades" class="left">  <!--Seção de Upgrades-->
                 <div class="upgrade" onclick="comprarUpgrade('frango')">
                     <div class="left-section">
                         <img src="sprites/upgrades/frango_1.png" alt="" class="upgrade-img">
@@ -50,6 +51,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
