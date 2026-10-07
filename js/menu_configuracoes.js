@@ -25,8 +25,14 @@ btn_fecharConfig.addEventListener("click", fecharMenu);
 
 //Estatisitcas
 
-const upgradesComprados = [];
+const upgradesComprados = []
 
-let moedasMusculoGerados = 0;
+
+const estatisticas ={
+    moeda:{
+        moedasMusculoGerados: 0
+    }
+}
+
 
 

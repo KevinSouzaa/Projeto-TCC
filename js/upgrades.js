@@ -4,9 +4,9 @@ const upgrades = {
         custo: 10,
         nivel: 0,
 
-        multiplicadorCusto: 1.5,
+        multiplicadorCusto: 1.3,
         moedasPorSegundo: 1,
-        multiplicadorMoedasPorSegundo: 1.1,
+        multiplicadorMoedasPorSegundo: 1.15,
 
         locking: "sprites/upgrades/frango_lock.png",
         img1: "sprites/upgrades/frango_1.png",
@@ -18,9 +18,9 @@ const upgrades = {
         custo: 100,
         nivel: 0,
 
-        multiplicadorCusto: 1.8,
+        multiplicadorCusto: 1.3,
         moedasPorSegundo: 10,
-        multiplicadorMoedasPorSegundo: 1.1,
+        multiplicadorMoedasPorSegundo: 1.15,
 
         locking: "sprites/upgrades/Ovo_lock.png",
         img1: "sprites/upgrades/Ovo_1.png",
@@ -32,9 +32,9 @@ const upgrades = {
         custo: 1000,
         nivel: 0,
 
-        multiplicadorCusto: 2,
-        moedasPorSegundo: 20,
-        multiplicadorMoedasPorSegundo: 1.1,
+        multiplicadorCusto: 1.3,
+        moedasPorSegundo: 50,
+        multiplicadorMoedasPorSegundo: 1.15,
 
         locking: "sprites/upgrades/HALTER_INFANTIL_lock.png",
         img1: "sprites/upgrades/HALTER_INFANTIL_1.png",
@@ -46,9 +46,9 @@ const upgrades = {
         custo: 10000,
         nivel: 0,
 
-        multiplicadorCusto: 2.5,
-        moedasPorSegundo: 100,
-        multiplicadorMoedasPorSegundo: 1.1,
+        multiplicadorCusto: 1.3,
+        moedasPorSegundo: 500,
+        multiplicadorMoedasPorSegundo: 1.15,
 
         locking: "sprites/upgrades/GARRAFA_AGUA_lock.png",
         img1: "sprites/upgrades/garrafa_agua_1.png",
@@ -60,9 +60,9 @@ const upgrades = {
         custo: 50000,
         nivel: 0,
 
-        multiplicadorCusto: 3,
-        moedasPorSegundo: 150,
-        multiplicadorMoedasPorSegundo: 1.1,
+        multiplicadorCusto: 1.3,
+        moedasPorSegundo: 1500,
+        multiplicadorMoedasPorSegundo: 1.15,
 
         locking: "sprites/upgrades/Personam_academia_lock.png",
         img1: "sprites/upgrades/Personam_academia_1.png",
@@ -74,11 +74,11 @@ const upgrades = {
         custo: 100000,
         nivel: 0,
 
-        multiplicadorCusto: 3.5,
-        moedasPorSegundo: 500,
-        multiplicadorMoedasPorSegundo: 1.1,
+        multiplicadorCusto: 1.3,
+        moedasPorSegundo: 10000,
+        multiplicadorMoedasPorSegundo: 1.5,
 
-        moedaTriceps: 1,
+        moedaTricepsPorSegundo: 1,
 
         locking: "sprites/upgrades/Barra_V_lock.png",
         img1: "sprites/upgrades/Barra_V_1.png",

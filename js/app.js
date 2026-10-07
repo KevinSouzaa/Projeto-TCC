@@ -1,14 +1,48 @@
 // Moedas
-let moedaMusculo = document.querySelector('.moeda-custo');
-let moedasMusculoPorSegundo = 0;
-let moedaMusculoTotal = 0;
+//Moeda principal
+const moeda = {
+    moedaMusculo: {
+        elemento: document.querySelector('.moeda-custo'),
+        porClick: 1,
+        porSegundo: 0,
+        total: 0
+    },
+    
+    moedaTriceps: {
+        elemento: 0,
+        porSegundo: 0,
+        total: 0
+    },
+    
+    moedaPeito: {
+        elemento: 0,
+        porSegundo: 0,
+        total: 0
+    },
 
+    moedaCostas: {
+        elemento: 0,
+        porSegundo: 0,
+        total: 0
+    },
 
+    moedaPernas: {
+        elemento: 0,
+        porSegundo: 0,
+        total: 0
+    },
+
+    moedaOmbros: {
+        elemento: 0,
+        porSegundo: 0,
+        total: 0
+    }
+}
 
 // Funções para atualizar a tela
 
 function atualizarTelaClick() {
-    moedaMusculo.innerHTML = moedaMusculoTotal;
+    moeda.moedaMusculo.elemento.innerHTML = Math.floor(moeda.moedaMusculo.total)
 }
 
 function atualizarTelaUpgrade(idDoUpgrade) {
@@ -24,13 +58,13 @@ function atualizarTelaUpgrade(idDoUpgrade) {
 // Funções para incremento de moeda
 
 function incrementarMoeda(nivelIncremetno = 1000000) {
-    moedaMusculoTotal += nivelIncremetno;
+    moeda.moedaMusculo.total += nivelIncremetno;
     atualizarTelaClick();
 }
 
 
 setInterval(() => {
-    moedaMusculoTotal += moedasMusculoPorSegundo;
+    moeda.moedaMusculo.total += moeda.moedaMusculo.porSegundo;
     atualizarTelaClick();
 }, 1000);
 
@@ -40,12 +74,16 @@ setInterval(() => {
 function comprarUpgrade(idDoUpgrade, valorSelecionado = 1) {
     let item = upgrades[idDoUpgrade];
 
-    if (moedaMusculoTotal >= item.custo) { // Arrumar com X numeros de upgrades comprados
-        moedaMusculoTotal -= item.custo;
+    if (moeda.moedaMusculo.total >= item.custo) { // Arrumar com X numeros de upgrades comprados
+        moeda.moedaMusculo.total -= item.custo;
+
         item.nivel += valorSelecionado; // Arrumar com X numeros de upgrades comprados
         item.custo = Math.floor(item.custo * item.multiplicadorCusto);
-        item.moedasPorSegundo = Math.floor(item.moedasPorSegundo * item.multiplicadorMoedasPorSegundo);
-        moedasMusculoPorSegundo += Math.floor(item.moedasPorSegundo); // Arrumar com X numeros de upgrades comprados 
+        
+        moeda.moedaMusculo.porSegundo += item.moedasPorSegundo; // Arrumar com X numeros de upgrades comprados
+        moeda.moedaMusculo.porSegundo = Math.round(moeda.moedaMusculo.porSegundo * 1000) / 1000; 
+        item.moedasPorSegundo = Math.round(item.moedasPorSegundo * item.multiplicadorMoedasPorSegundo * 1000) / 1000; 
+        console.log("Esse é a moeda por segundo do upgrade:" + item.moedasPorSegundo)
         
         atualizarTelaUpgrade(idDoUpgrade);
 
@@ -67,3 +105,6 @@ function adicionarUpgradeComprado(idDoUpgrade) {
     );
 }
 
+setInterval(() => {
+    console.log(moeda.moedaMusculo.porSegundo)
+}, 1000);
