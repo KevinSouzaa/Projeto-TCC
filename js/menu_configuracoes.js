@@ -30,7 +30,7 @@ const upgradesComprados = []
 
 const estatisticas ={
     moeda:{
-        moedasMusculoGerados: 0
+        MusculoGerado: 0
     }
 }
 

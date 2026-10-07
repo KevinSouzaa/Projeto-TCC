@@ -1,38 +1,47 @@
 // Moedas
 //Moeda principal
 const moeda = {
-    moedaMusculo: {
+    Musculo: {
         elemento: document.querySelector('.moeda-custo'),
         porClick: 1,
         porSegundo: 0,
         total: 0
     },
+
+    Rebirth: {
+        elemento: 0,
+        total: 0,
+        valorNecessario: 1000,
+        multiplicadorValorNecessario: 1.5,
+        progressoElemento: 0,
+        progressoValor: 0
+    },
     
-    moedaTriceps: {
+    Triceps: {
         elemento: 0,
         porSegundo: 0,
         total: 0
     },
     
-    moedaPeito: {
+    Peito: {
         elemento: 0,
         porSegundo: 0,
         total: 0
     },
 
-    moedaCostas: {
+    Costas: {
         elemento: 0,
         porSegundo: 0,
         total: 0
     },
 
-    moedaPernas: {
+    Pernas: {
         elemento: 0,
         porSegundo: 0,
         total: 0
     },
 
-    moedaOmbros: {
+    Ombros: {
         elemento: 0,
         porSegundo: 0,
         total: 0
@@ -42,7 +51,7 @@ const moeda = {
 // Funções para atualizar a tela
 
 function atualizarTelaClick() {
-    moeda.moedaMusculo.elemento.innerHTML = Math.floor(moeda.moedaMusculo.total)
+    moeda.Musculo.elemento.innerHTML = Math.floor(moeda.Musculo.total)
 }
 
 function atualizarTelaUpgrade(idDoUpgrade) {
@@ -54,19 +63,51 @@ function atualizarTelaUpgrade(idDoUpgrade) {
     atualizarTelaClick();
 } 
 
-
-// Funções para incremento de moeda
-
-function incrementarMoeda(nivelIncremetno = 1000000) {
-    moeda.moedaMusculo.total += nivelIncremetno;
-    atualizarTelaClick();
+function atualizarTelaRebirth(){
+    console.log("Rebirth Recebido")
 }
 
 
-setInterval(() => {
-    moeda.moedaMusculo.total += moeda.moedaMusculo.porSegundo;
+
+
+// Funções para incremento de moeda
+
+function incrementarMoeda(nivelIncremento = 10) {
+    moeda.Musculo.total += nivelIncremento;
+    estatisticas.moeda.MusculoGerado += nivelIncremento
+    moeda.Rebirth.progressoValor += nivelIncremento
     atualizarTelaClick();
+
+    if (moeda.Rebirth.progressoValor >= moeda.Rebirth.valorNecessario){
+        incrementarMoedaRebirth()
+    }
+}
+
+
+function incrementarMoedaRebirth(){
+    if (moeda.Rebirth.progressoValor >= moeda.Rebirth.valorNecessario)
+        moeda.Rebirth.total += 1
+        moeda.Rebirth.valorNecessario = Math.round(moeda.Rebirth.valorNecessario * moeda.Rebirth.multiplicadorValorNecessario * 1000) / 1000
+        moeda.Rebirth.progressoValor = 0
+        atualizarTelaRebirth()
+}
+
+setInterval(() => {
+    moeda.Musculo.total += moeda.Musculo.porSegundo;
+    estatisticas.moeda.MusculoGerado += moeda.Musculo.porSegundo;
+    moeda.Rebirth.progressoValor += moeda.Musculo.porSegundo;
+
+    if ((moeda.Rebirth.progressoValor >= moeda.Rebirth.valorNecessario)){
+        incrementarMoedaRebirth()
+    }
+
+    atualizarTelaClick();
+    atualizarProgressoRebirth()
 }, 1000);
+
+
+
+
 
 
 // Funções para comprar upgrades
@@ -74,14 +115,14 @@ setInterval(() => {
 function comprarUpgrade(idDoUpgrade, valorSelecionado = 1) {
     let item = upgrades[idDoUpgrade];
 
-    if (moeda.moedaMusculo.total >= item.custo) { // Arrumar com X numeros de upgrades comprados
-        moeda.moedaMusculo.total -= item.custo;
+    if (moeda.Musculo.total >= item.custo) { // Arrumar com X numeros de upgrades comprados
+        moeda.Musculo.total -= item.custo;
 
         item.nivel += valorSelecionado; // Arrumar com X numeros de upgrades comprados
         item.custo = Math.floor(item.custo * item.multiplicadorCusto);
-        
-        moeda.moedaMusculo.porSegundo += item.moedasPorSegundo; // Arrumar com X numeros de upgrades comprados
-        moeda.moedaMusculo.porSegundo = Math.round(moeda.moedaMusculo.porSegundo * 1000) / 1000; 
+
+        moeda.Musculo.porSegundo += item.moedasPorSegundo; // Arrumar com X numeros de upgrades comprados
+        moeda.Musculo.porSegundo = Math.round(moeda.Musculo.porSegundo * 1000) / 1000; 
         item.moedasPorSegundo = Math.round(item.moedasPorSegundo * item.multiplicadorMoedasPorSegundo * 1000) / 1000; 
         console.log("Esse é a moeda por segundo do upgrade:" + item.moedasPorSegundo)
         
@@ -105,6 +146,15 @@ function adicionarUpgradeComprado(idDoUpgrade) {
     );
 }
 
-setInterval(() => {
-    console.log(moeda.moedaMusculo.porSegundo)
-}, 1000);
+
+// Progresso Rebirth
+
+function atualizarProgressoRebirth(){
+    moeda.Rebirth.progressoElemento = ((moeda.Rebirth.valorNecessario - (moeda.Rebirth.valorNecessario - moeda.Rebirth.progressoValor)) * 100) / moeda.Rebirth.valorNecessario;;
+    if (moeda.Rebirth.progressoElemento <= 100){
+        
+    }
+    else{
+        console.log("Progresso:100%")
+    }
+}
