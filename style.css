@@ -68,15 +68,60 @@ header{
     height: 35px;
 }
 
+.barra-prog-rebirth {
+    position: absolute;
+    left: 43%; /* Empurra a barra para o meio do ecrã */
+    
+    transform: translateX(-50%); /* Puxa a barra um pouco para trás para ficar perfeitamente centrada */
+    
+    overflow: hidden;
+    width: 350px; 
+    height: 30px; 
+    background-color: gray;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#preenchimento-rebirth{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    transition: width 0.2s;
+    background-color: blue;
+}
+
 .barra-prog-rebirth h4{
     position: absolute;
-    left: 590px;
-    top: 21px;
-    width: 400px;
-    height: 38px;
-    background-color: blue;
-    text-align: center;
-    padding-top: 10px;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex; /* Centra o texto perfeitamente na vertical e horizontal */
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    color: white;
+}
+
+@keyframes pulsarBrilho {
+    0% { 
+        box-shadow: 0 0 5px blue; 
+        transform: translateX(-50%) scale(1); 
+    }
+    50% { 
+        box-shadow: 0 0 25px cyan; 
+        transform: translateX(-50%) scale(1.05); /* Aumenta ligeiramente o tamanho */
+    }
+    100% { 
+        box-shadow: 0 0 5px blue; 
+        transform: translateX(-50%) scale(1); 
+    }
+}
+
+.barra-prog-rebirth.pronto {
+    animation: pulsarBrilho 1.5s infinite; 
+    border: 3px solid cyan; /* Borda um pouco mais espessa para destacar */
 }
 
 .main{

@@ -72,15 +72,18 @@ function atualizarTelaRebirth(){
 
 // Funções para incremento de moeda
 
-function incrementarMoeda(nivelIncremento = 10) {
+function incrementarMoeda(nivelIncremento = 100) {
     moeda.Musculo.total += nivelIncremento;
     estatisticas.moeda.MusculoGerado += nivelIncremento
     moeda.Rebirth.progressoValor += nivelIncremento
     atualizarTelaClick();
+    atualizarProgressoRebirth();
 
+    /*
     if (moeda.Rebirth.progressoValor >= moeda.Rebirth.valorNecessario){
         incrementarMoedaRebirth()
     }
+    */
 }
 
 
@@ -90,6 +93,8 @@ function incrementarMoedaRebirth(){
         moeda.Rebirth.valorNecessario = Math.round(moeda.Rebirth.valorNecessario * moeda.Rebirth.multiplicadorValorNecessario * 1000) / 1000
         moeda.Rebirth.progressoValor = 0
         atualizarTelaRebirth()
+
+        barraprogresso.style.width = "0%";
 }
 
 setInterval(() => {
@@ -97,9 +102,11 @@ setInterval(() => {
     estatisticas.moeda.MusculoGerado += moeda.Musculo.porSegundo;
     moeda.Rebirth.progressoValor += moeda.Musculo.porSegundo;
 
+    /*
     if ((moeda.Rebirth.progressoValor >= moeda.Rebirth.valorNecessario)){
         incrementarMoedaRebirth()
     }
+    */
 
     atualizarTelaClick();
     atualizarProgressoRebirth()
@@ -139,22 +146,52 @@ function adicionarUpgradeComprado(idDoUpgrade) {
 
     upgradesComprados.push(idDoUpgrade);
 
+    // Adiciona a imagem do upgrade assim que ele é comprado
+    let elementoImg = document.getElementById(`${idDoUpgrade}-img`);
+
+    elementoImg.src = upgrades[idDoUpgrade].img1;
+
     framesUpgradeComprados.push({
-        elemento: document.getElementById(`${idDoUpgrade}-img`),
+        elemento: elementoImg,
         frames: [upgrades[idDoUpgrade].img1, upgrades[idDoUpgrade].img2],
         }
     );
 }
 
+const botaoRebirth = document.getElementById("botao-rebirth"); 
+const barraprogresso = document.getElementById("preenchimento-rebirth")
+
+function clicarNoRebirth() {
+    // Só deixa dar rebirth se a barra estiver no talo
+    if (moeda.Rebirth.progressoValor >= moeda.Rebirth.valorNecessario) {
+        incrementarMoedaRebirth();
+
+        barraprogresso.style.width = "0%";
+        botaoRebirth.classList.remove("pronto");
+        
+        // (Opcional) Aqui entraria também o código para apagar os níveis 
+        // dos frangos e halteres e zerar os seus músculos
+    } else {
+        console.log("Você ainda precisa treinar mais para o Rebirth!");
+    }
+}
+
 
 // Progresso Rebirth
 
-function atualizarProgressoRebirth(){
-    moeda.Rebirth.progressoElemento = ((moeda.Rebirth.valorNecessario - (moeda.Rebirth.valorNecessario - moeda.Rebirth.progressoValor)) * 100) / moeda.Rebirth.valorNecessario;;
-    if (moeda.Rebirth.progressoElemento <= 100){
-        
-    }
-    else{
-        console.log("Progresso:100%")
+
+
+function atualizarProgressoRebirth() {
+    // Calcula a percentagem
+    moeda.Rebirth.progressoElemento = (moeda.Rebirth.progressoValor * 100) / moeda.Rebirth.valorNecessario;
+    
+    if (moeda.Rebirth.progressoElemento < 100) {
+        // Enquanto não chega ao fim, atualiza o tamanho e garante que não há brilho
+        barraprogresso.style.width = moeda.Rebirth.progressoElemento + "%";
+        botaoRebirth.classList.remove("pronto");
+    } else {
+        // Chegou ao fim! Trava em 100% e liga o brilho
+        barraprogresso.style.width = "100%";
+        botaoRebirth.classList.add("pronto");
     }
 }
