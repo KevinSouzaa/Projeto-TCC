@@ -11,81 +11,129 @@ body {
     display: grid;
     place-items: center;
     height: 100vh;
-    margin: 0;
-    padding: 0;
     background-color: #b38282;
     user-select: none;
 }
 
-header{
+
+/* HEADER SECTION  START*/
+
+header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 2px 24px;
+
+    background-color: rgb(255, 255, 255, 0.65);
+}
+
+.header-left,
+.header-mid,
+.header-right {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    height: 80px;
-    width: 100%;
-    top: 0;    
-    background-color: rgb(255, 255, 255, 0.65);
-    backdrop-filter: blur(6px);
-    z-index: 100;
-    border: 1px solid #ddd;
+
+    height: 100%;
+}
+
+
+.header-left {
+    display: flex;
+    align-items: center;
+    justify-self: start;
+    gap: 10px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+}
+
+.header-mid {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    
+    gap: 8px;
+}
+
+#rebirth-barra-progresso{
+    min-width: 200px;
+    
+    background-color: blue;
+}
+
+#rebirth-moeda{
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    width: 120px;
+}
+
+#rebirth-moeda img{
+    text-align: left;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-self: end;
+
+    gap: 10px; 
 }
 
 .botoes{
-    display: flex;
-    justify-content: space-between;
-    width: 1800px;
- }
-
- .botoes-header #btn-esquerda{
-   height: 30px;
-    width: 100px;
-    color: aliceblue;
-    background-color:rgb(13, 19, 17);
-    border-radius: 10%;
-    cursor: pointer;
- }
-
- .botoes-header #btn-direita{
-    position: absolute;
-    left: 1800px;
     height: 30px;
-    width: 100px;
-    color: aliceblue;
-    background-color:rgb(13, 19, 17);
+    min-width: 100px;
+    
     border-radius: 10%;
     cursor: pointer;
+
+    color: aliceblue;
+    background-color: rgb(13, 19, 17);
  }
 
- .moeda h3 {
-    position: absolute;
-    left: 1000px;
-    top: 20px;
+
+
+/* HEADER SECTION END */
+
+/* MAIN SECTION START*/
+
+.game{
+    display: flex;
+    flex-direction: row;
 }
 
-.braco-image {
+/* MAIN SECTION END*/
+
+/* RIGHT SECTION START*/
+
+.braco-image,
+.rebirth-trofeu {
     width: 35px;
     height: 35px;
 }
 
-.barra-prog-rebirth h4{
-    position: absolute;
-    left: 590px;
-    top: 21px;
-    width: 400px;
-    height: 38px;
-    background-color: blue;
-    text-align: center;
-    padding-top: 10px;
+.mid-section{
+    background-color: aqua;
 }
 
-.main{
-    display: flex;
-    flex-direction: row-reverse;
-    gap: 200px;
-}
-
-.right h3 {
+.mid-section h3 {
     text-align: center;
     font-size: 30px;
     margin-bottom: 50px;
@@ -106,12 +154,6 @@ header{
     transform: scale(1.02);
 }
 
-.upgrade-img {
-    width: 60px;
-}
-
-
-
 .upgrade {
    display: flex;
    align-items: center;
@@ -127,12 +169,21 @@ header{
 
 }
 
+.upgrade-img {
+    width: 60px;
+}
+
+
+/* RIGHT SECTION END*/
+
+/* MID SECTION START*/
 .mid-section h4{
     margin: 0px;
     margin-bottom: 10px;
     font-size:25px;
     margin-top: 10px;
 }
+
 
 .mid-section {
     margin: 5px;
@@ -164,6 +215,20 @@ header{
     flex-direction: column;
     gap: 15px;
 }
+
+
+/* MID SECTION END*/
+
+/* LEFT SECTION START*/
+
+/* LEFT SECTION END*/
+
+/* BOTTOM SECTION START*/
+
+/* BOTTOM SECTION END*/
+
+
+
 
 #overlay-configuracoes {
     display: none; /* Escondido por padrão */
