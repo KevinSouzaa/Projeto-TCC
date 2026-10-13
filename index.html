@@ -9,39 +9,23 @@
 <body>
 
     <header>
-<<<<<<< HEAD
-        <a href="#" class="logo"><img src="sprites/upgrades/frango_1.png" alt=""></a>
-
-            <section class="botoes-header">
-                <div class="botoes">
-                    <button id="btn-esquerda">Estatísticas</button>
-                    <button id="btn-direita">Configurações</button>
-                </div>
-            </section>
-                <div class="moeda">
-                        <h3><img src="sprites/moedas/braco.png" alt="" class="braco-image" draggable="false"> <span class="moeda-custo">0</span></h3>
-                </div>
-                <div class="barra-prog-rebirth">
-                    
-                    <div id = "preenchimento-rebirth">
-                        <h4>Rebirth</h4>
-                    </div>
-                </div>
-=======
         <div class="header-left">
             <a href="#" class="logo"><img src="sprites/upgrades/frango_1.png" alt=""></a>
             <button class="botoes" id="btn-esquerdo">Estatísticas</button>
         </div>
         <div class="header-mid">
-            <div id="rebirth-barra-progresso">Rebirth</div>
-            <button>Botão</button>
-            <img src="sprites/moedas/rebirth_trofeu_1.png" alt="" class="rebirth-trofeu" draggable="false"> <!---MUDAR AS VARIAVIES-->
-             <h3 id="rebirth-moeda"><span class="moeda-custo">0</span></h3>
+            <div id="botao-rebirth" class="barra-prog-rebirth" onclick="clicarNoRebirth()">
+                <div id = "preenchimento-rebirth"></div>
+                    <h4>Rebirth</h4>
+            </div>
+            <div class="rebirth-status">
+                <img src="sprites/moedas/rebirth_trofeu_1.png" alt="" class="rebirth-trofeu" draggable="false">
+                <h3 id="rebirth-moeda"><span class="moeda-custo">0</span></h3>
+            </div>
         </div>
         <div class="header-right">
             <button class="botoes" id="btn-direita">Configurações</button>
         </div>
->>>>>>> 3231de2b3a146dc7f307e6f7c77ad35a850d484d
     </header>
 
     <main class="game"> <!--Seção Pincipal-->

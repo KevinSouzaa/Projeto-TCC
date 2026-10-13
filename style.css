@@ -66,16 +66,9 @@ header {
 
 .header-mid {
     display: flex;
-    justify-self: center;
     align-items: center;
     
-    gap: 8px;
-}
-
-#rebirth-barra-progresso{
-    min-width: 200px;
-    
-    background-color: blue;
+    gap: 20px;
 }
 
 #rebirth-moeda{
@@ -123,23 +116,26 @@ header {
 
 /* RIGHT SECTION START*/
 
+.rebirth-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .braco-image,
 .rebirth-trofeu {
+    left: 50px;
     width: 35px;
     height: 35px;
 }
 
 .barra-prog-rebirth {
-    position: absolute;
-    left: 43%; /* Empurra a barra para o meio do ecrã */
-    
-    transform: translateX(-50%); /* Puxa a barra um pouco para trás para ficar perfeitamente centrada */
-    
+    position: relative;
     overflow: hidden;
     width: 350px; 
-    height: 30px; 
+    height: 30px;
+    border-radius: 8px; 
     background-color: gray;
-    border-radius: 8px;
     cursor: pointer;
 }
 
@@ -158,7 +154,7 @@ header {
     width: 100%;
     height: 100%;
     margin: 0;
-    display: flex; /* Centra o texto perfeitamente na vertical e horizontal */
+    display: flex; 
     align-items: center;
     justify-content: center;
     z-index: 2;
@@ -168,21 +164,21 @@ header {
 @keyframes pulsarBrilho {
     0% { 
         box-shadow: 0 0 5px blue; 
-        transform: translateX(-50%) scale(1); 
+        transform: scale(1);
     }
     50% { 
         box-shadow: 0 0 25px cyan; 
-        transform: translateX(-50%) scale(1.05); /* Aumenta ligeiramente o tamanho */
+        transform: scale(1.05);
     }
     100% { 
         box-shadow: 0 0 5px blue; 
-        transform: translateX(-50%) scale(1); 
+        transform: scale(1);
     }
 }
 
 .barra-prog-rebirth.pronto {
     animation: pulsarBrilho 1.5s infinite; 
-    border: 3px solid cyan; /* Borda um pouco mais espessa para destacar */
+    border: 3px solid cyan; 
 }
 
 .mid-section{
@@ -266,11 +262,6 @@ header {
 }
 
 
-.left {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
 
 
 /* MID SECTION END*/
