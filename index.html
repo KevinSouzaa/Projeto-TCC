@@ -9,6 +9,7 @@
 <body>
 
     <header>
+<<<<<<< HEAD
         <a href="#" class="logo"><img src="sprites/upgrades/frango_1.png" alt=""></a>
 
             <section class="botoes-header">
@@ -26,37 +27,60 @@
                         <h4>Rebirth</h4>
                     </div>
                 </div>
+=======
+        <div class="header-left">
+            <a href="#" class="logo"><img src="sprites/upgrades/frango_1.png" alt=""></a>
+            <button class="botoes" id="btn-esquerdo">Estatísticas</button>
+        </div>
+        <div class="header-mid">
+            <div id="rebirth-barra-progresso">Rebirth</div>
+            <button>Botão</button>
+            <img src="sprites/moedas/rebirth_trofeu_1.png" alt="" class="rebirth-trofeu" draggable="false"> <!---MUDAR AS VARIAVIES-->
+             <h3 id="rebirth-moeda"><span class="moeda-custo">0</span></h3>
+        </div>
+        <div class="header-right">
+            <button class="botoes" id="btn-direita">Configurações</button>
+        </div>
+>>>>>>> 3231de2b3a146dc7f307e6f7c77ad35a850d484d
     </header>
 
-    <section>
-        <div class="main">
-            <div class="right">
-             <img src="sprites/personagem/Fraco_1.png" alt="" srcset="" class="boneco-image" onclick="incrementarMoeda()" draggable="false">
-            </div>
+    <main class="game"> <!--Seção Pincipal-->
+        <section id = "lojaUpgrades" class="left-section">  <!--Seção da DIREITA  (Upgrades)-->
+            <div class="upgrade" onclick="comprarUpgrade('frango')">
 
-            <section id = "lojaUpgrades" class="left">  <!--Seção de Upgrades-->
-                <div class="upgrade" onclick="comprarUpgrade('frango')">
-                    <div class="left-section">
-                        <img src="sprites/upgrades/frango_lock.png" alt="" id="frango-img" class="upgrade-img">
-                    </div>
+                <div class="upgrade-icon">
+                    <img src="sprites/upgrades/frango_lock.png" alt="" id="frango-img" class="upgrade-img">
+                </div>
 
-                    <div class="mid-section">
-                        <h4>Frango</h4>
-
-                        <div class="preco-info">
-                            <p>Preço: <span id="preco-frango">10</span> </p>
-                            <img src="sprites/moedas/braco.png" alt="" class="braco-img">
-                        </div>
-                    </div>
-
-                    <div class="right-section">
-                        <span id="nivel-frango">0</span>
+                <div class="upgrade-info">
+                    <h4>Frango</h4>
+                    <div class="preco-info">
+                        <p>Preço: <span id="preco-frango">10</span> </p>
+                        <img src="sprites/moedas/braco.png" alt="" class="braco-img">
                     </div>
                 </div>
-            </section>
 
-        </div>
-    </section>
+                <div class="upgrade-level">
+                    <span id="nivel-frango">0</span>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="mid-section"> <!-- Seção do meio (Personagem)-->
+            <div class="moeda">
+                <h3><img src="sprites/moedas/braco.png" alt="" class="braco-image" draggable="false"> <span class="moeda-custo">0</span></h3>
+            </div>
+            <img src="sprites/personagem/Fraco_1.png" alt="" srcset="" class="boneco-image" onclick="incrementarMoeda()" draggable="false">
+        </section>
+
+        <section class="right-section">
+            <p>oi</p>
+        </section>
+
+        <section class="botom-section"> Olá dnv</section>
+
+        </main>
 
     <div id="overlay-configuracoes"></div>
 

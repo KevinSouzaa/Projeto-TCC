@@ -96,11 +96,11 @@ function mostrarNovoUpgrade() {
         if (!upgradesLateral.includes(upgrade)) {
             lojaUpgrades += `
                 <div class="upgrade" onclick="comprarUpgrade('${upgrade}')">
-                    <div class="left-section">
+                    <div class="upgrade-icon">
                         <img src="${upgrades[upgrade].locking}" alt="" id="${upgrade}-img" class="upgrade-img">
                     </div>
 
-                    <div class="mid-section">
+                    <div class="upgrade-info">
                         <h4>${upgrades[upgrade].nome}</h4>
 
                         <div class="preco-info">
@@ -109,7 +109,7 @@ function mostrarNovoUpgrade() {
                         </div>
                     </div>
 
-                    <div class="right-section">
+                    <div class="upgrade-level">
                         <span id="nivel-${upgrade}">${upgrades[upgrade].nivel}</span>
                     </div>
                 </div>
