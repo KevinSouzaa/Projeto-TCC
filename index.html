@@ -91,6 +91,13 @@
                     <button id="btn-excluirsalvamento">Excluir Salvamento</button>
                 </label>
             </div>
+            <div>
+                <label>
+                    <button id="btn-exportarsave">Exportar Save</button>
+                    <button id="btn-importarsave">Importar Save</button>
+                </label>
+            </div>
+            <textarea id="codigo-save" rows="4" placeholder="Clique em Exportar para gerar o código do seu save, ou cole um código aqui e clique em Importar"></textarea>
         </div>
     </section>
     <script src="js/sprites.js"></script> <!--Sempre o primeiro, nosso documento com os caminhos -->
@@ -98,5 +105,6 @@
     <script src="js/animacoes.js"></script>
     <script src="js/upgrades.js"></script>
     <script src="js/app.js"></script> <!--Sempre o ultimo, pois depende da coisa dos de cima-->
+    <script src="js/save.js"></script> <!--Depois do app.js, pois usa os objetos do jogo-->
 </body>
 </html>
