@@ -72,7 +72,7 @@ function atualizarTelaRebirth(){
 
 // Funções para incremento de moeda
 
-function incrementarMoeda(nivelIncremento = 100) {
+function incrementarMoeda(nivelIncremento = 10000000) {
     moeda.Musculo.total += nivelIncremento;
     estatisticas.moeda.MusculoGerado += nivelIncremento
     moeda.Rebirth.progressoValor += nivelIncremento

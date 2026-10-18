@@ -110,6 +110,14 @@ header {
 .game{
     display: flex;
     flex-direction: row;
+
+    /*Centralizando os elementos na esquerda, centro e direita */
+    width: 100vw;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    box-sizing: border-box;
+    margin-top: 60px;
 }
 
 /* MAIN SECTION END*/
@@ -182,7 +190,10 @@ header {
 }
 
 .mid-section{
+
     background-color: aqua;
+    width: 800px;
+    height: 500px;
 }    
 
 .mid-section h3 {
@@ -192,6 +203,7 @@ header {
 }
 
 .boneco-image {
+    align-items: center;
     width: 250px;  
 }
 
@@ -210,7 +222,7 @@ header {
    display: flex;
    align-items: center;
    justify-content: space-between;
-   transform: translateX(-450px);
+  
    background-color: aquamarine;
    width: 320px;
    height: 60px;
@@ -218,7 +230,6 @@ header {
    padding: 10px;
    border-radius: 20px;
    cursor: pointer;
-
 }
 
 .upgrade-img {
@@ -239,6 +250,7 @@ header {
 
 .mid-section {
     margin: 5px;
+    border-radius: 15px;
 }
 
 .preco-info {
@@ -339,4 +351,38 @@ header {
     width: 25px;
     height: 25px;
     cursor: pointer;
+}
+
+.game h1 {
+    position: absolute;
+    top: 14%;
+    left: 125px;
+}
+
+#lojaUpgrades {
+    background-color:burlywood;
+    border: 4px solid white; 
+    border-radius: 15px;
+    padding: 20px;
+
+    
+    
+    width: 380px;
+    height: 50vh;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction:column;
+    gap: 10px;
+}
+
+/* Opcional: Esconder a barra de rolagem da loja */
+#lojaUpgrades {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    -ms-overflow-style: none;
+
+    scrollbar-width: none;
 }
