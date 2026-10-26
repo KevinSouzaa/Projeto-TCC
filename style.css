@@ -354,6 +354,12 @@ header {
     cursor: pointer;
 }
 
+#codigo-save {
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+}
+
 #configuracoes #fechar-config {
     position: absolute;
     top: 15px;
