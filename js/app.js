@@ -143,19 +143,16 @@ function comprarUpgrade(idDoUpgrade, valorSelecionado = 1) {
 }
 
 function adicionarUpgradeComprado(idDoUpgrade) {
-
     upgradesComprados.push(idDoUpgrade);
 
     // Adiciona a imagem do upgrade assim que ele é comprado
     let elementoImg = document.getElementById(`${idDoUpgrade}-img`);
 
-    elementoImg.src = upgrades[idDoUpgrade].img1;
+    const DURACAO_ANIM = 2000; //ms, deve ser igual o valor no style.css
 
-    framesUpgradeComprados.push({
-        elemento: elementoImg,
-        frames: [upgrades[idDoUpgrade].img1, upgrades[idDoUpgrade].img2],
-        }
-    );
+    elementoImg.src = upgrades[idDoUpgrade].img;
+    elementoImg.style.animationDelay = `-${(document.timeline.currentTime % DURACAO_ANIM) / 1000}s`;
+    elementoImg.classList.add("comprado");
 }
 
 const botaoRebirth = document.getElementById("botao-rebirth"); 

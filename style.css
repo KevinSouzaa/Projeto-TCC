@@ -236,7 +236,7 @@ header {
   
    background-color: aquamarine;
    width: 320px;
-   height: 60px;
+   height: 80px;
    border: 4px solid white; 
    padding: 10px;
    border-radius: 20px;
@@ -244,9 +244,18 @@ header {
 }
 
 .upgrade-img {
-    width: 60px;
+    width: 64px; /* precisa ser n^2 para não ficar todo feio no site*/
 }
 
+.upgrade-img.comprado {
+    /* use "steps(1)" no lugar de "ease-in-out" para fazer ela mais rigida*/
+    animation: bob 2s ease-in-out infinite;
+}
+
+@keyframes bob {
+    0%, 100%    { transform: translateY(2px); }
+    50%         { transform: translateY(-2px); }    
+}
 
 /* RIGHT SECTION END*/
 

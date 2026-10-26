@@ -9,8 +9,7 @@ const upgrades = {
         multiplicadorMoedasPorSegundo: 1.15,
 
         locking: "sprites/upgrades/frango_lock.png",
-        img1: "sprites/upgrades/frango_1.png",
-        img2: "sprites/upgrades/frango_2.png"
+        img: "sprites/upgrades/frango_1.png"
     },
 
     ovo: {
@@ -22,9 +21,8 @@ const upgrades = {
         moedasPorSegundo: 10,
         multiplicadorMoedasPorSegundo: 1.15,
 
-        locking: "sprites/upgrades/Ovo_lock.png",
-        img1: "sprites/upgrades/Ovo_1.png",
-        img2: "sprites/upgrades/Ovo_2.png"
+        locking: "sprites/upgrades/ovo_bloqueado.png",
+        img: "sprites/upgrades/ovo.png",
     },
 
     halterInfantil: {
@@ -37,8 +35,7 @@ const upgrades = {
         multiplicadorMoedasPorSegundo: 1.15,
 
         locking: "sprites/upgrades/HALTER_INFANTIL_lock.png",
-        img1: "sprites/upgrades/HALTER_INFANTIL_1.png",
-        img2: "sprites/upgrades/HALTER_INFANTIL_2.png"
+        img: "sprites/upgrades/HALTER_INFANTIL_1.png"
     },
 
     garrafaAgua: {
@@ -51,8 +48,7 @@ const upgrades = {
         multiplicadorMoedasPorSegundo: 1.15,
 
         locking: "sprites/upgrades/GARRAFA_AGUA_lock.png",
-        img1: "sprites/upgrades/garrafa_agua_1.png",
-        img2: "sprites/upgrades/garrafa_agua_2.png"
+        img: "sprites/upgrades/garrafa_agua_1.png"
     },
 
     personalAcademia: {
@@ -65,8 +61,7 @@ const upgrades = {
         multiplicadorMoedasPorSegundo: 1.15,
 
         locking: "sprites/upgrades/Personam_academia_lock.png",
-        img1: "sprites/upgrades/Personam_academia_1.png",
-        img2: "sprites/upgrades/Personam_academia_2.png"
+        img: "sprites/upgrades/Personam_academia_1.png"
     },
 
     BarraV: {
@@ -81,8 +76,7 @@ const upgrades = {
         moedaTricepsPorSegundo: 1,
 
         locking: "sprites/upgrades/Barra_V_lock.png",
-        img1: "sprites/upgrades/Barra_V_1.png",
-        img2: "sprites/upgrades/Barra_V_2.png"
+        img: "sprites/upgrades/Barra_V_1.png"
     }
 };
 
