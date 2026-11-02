@@ -119,6 +119,10 @@ setInterval(() => {
 
 // Funções para comprar upgrades
 
+const efeito_compra = new Audio("./sound/compra_upgrade.mp3")
+
+efeito_compra.volume = 0.3;
+
 function comprarUpgrade(idDoUpgrade, valorSelecionado = 1) {
     let item = upgrades[idDoUpgrade];
 
@@ -132,6 +136,8 @@ function comprarUpgrade(idDoUpgrade, valorSelecionado = 1) {
         moeda.Musculo.porSegundo = Math.round(moeda.Musculo.porSegundo * 1000) / 1000; 
         item.moedasPorSegundo = Math.round(item.moedasPorSegundo * item.multiplicadorMoedasPorSegundo * 1000) / 1000; 
         console.log("Esse é a moeda por segundo do upgrade:" + item.moedasPorSegundo)
+
+        efeito_compra.play()
         
         atualizarTelaUpgrade(idDoUpgrade);
 
@@ -140,6 +146,8 @@ function comprarUpgrade(idDoUpgrade, valorSelecionado = 1) {
             adicionarUpgradeComprado(idDoUpgrade);
         }
     }
+
+
 }
 
 function adicionarUpgradeComprado(idDoUpgrade) {
