@@ -2,11 +2,11 @@
 const btn_AbrirConfig = document.getElementById("btn-direita")
 const btn_fecharConfig = document.getElementById("btn-fechar-config");
 
-const efeito_abrir = new Audio("./sound/abrir_config.wav")
+const efeito_abrir = new Audio("./sound/abrir_config2.mp3")
 
 efeito_abrir.volume = 0.3;
 
-const efeito_fechar = new Audio("./sound/fechar_config.wav")
+const efeito_fechar = new Audio("./sound/fechar_config2.mp3")
 
 efeito_fechar.volume = 0.3;
 
