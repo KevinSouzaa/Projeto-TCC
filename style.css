@@ -10,9 +10,11 @@
 body {
     display: grid;
     place-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    min-height: 100dvh;
     background-color: #b38282;
     user-select: none;
+    overflow-x: hidden;
 }
 
 
@@ -29,9 +31,10 @@ header {
     z-index: 100;
 
     width: 100%;
-    height: 60px;
+    min-height: 60px;
+    height: auto;
     box-sizing: border-box;
-    padding: 2px 24px;
+    padding: 5px 2%;
 
     background-color: rgb(255, 255, 255, 0.65);
 }
@@ -67,8 +70,7 @@ header {
 .header-mid {
     display: flex;
     align-items: center;
-    
-    gap: 20px;
+    gap: clamp(5px, 2vw, 20px);
 }
 
 #rebirth-moeda{
@@ -90,16 +92,17 @@ header {
     gap: 10px; 
 }
 
-.botoes{
+.botoes {
     height: 30px;
-    min-width: 100px;
-    
+    min-width: 80px;
+    padding: 0 10px;
+
     border-radius: 10%;
     cursor: pointer;
 
     color: aliceblue;
     background-color: rgb(13, 19, 17);
- }
+}
 
 
 
@@ -107,17 +110,27 @@ header {
 
 /* MAIN SECTION START*/
 
-.game{
-    display: flex;
-    flex-direction: row;
+.game {
+    display: grid;
 
-    /*Centralizando os elementos na esquerda, centro e direita */
-    width: 100vw;
-    justify-content: space-between;
-    align-items: center;
-    padding: 40px;
+    grid-template-columns: 1fr 2fr 1fr;
+
+    grid-template-rows: auto auto;
+
+    grid-template-areas:
+    "titulo personagem titulo-direita"
+    "loja personagem direita";
+
+    width: 100%;
+    min-height: calc(100dvh - 60px);
+
+    gap: 10px;
+    padding: 20px;
+
     box-sizing: border-box;
     margin-top: 60px;
+
+    align-items: start;
 }
 
 /* MAIN SECTION END*/
@@ -128,6 +141,7 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-shrink: 0;
 }
 
 .braco-image,
@@ -140,9 +154,14 @@ header {
 .barra-prog-rebirth {
     position: relative;
     overflow: hidden;
-    width: 350px; 
+
+    width: 350px;
+    min-width: 250px;
     height: 30px;
-    border-radius: 8px; 
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
     background-color: gray;
     cursor: pointer;
 }
@@ -189,20 +208,25 @@ header {
     border: 3px solid cyan; 
 }
 
-.mid-section{
+.mid-section {
+    grid-area: personagem;
+
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*justify-content: center;*/
+    justify-content: center;
 
     background-color: aqua;
-    width: 800px;
-    height: 600px;
-    margin: 0;
 
-    transform: translateY(-100px);
-}    
+    width: 100%;
+    min-height: 500px;
+    height: 100%;
+
+    margin: 0;
+    transform: none;
+    border-radius: 15px;
+}
 
 .mid-section h3 {
     text-align: center;
@@ -213,7 +237,7 @@ header {
 .boneco-image {
     display: block;
     align-items: center;
-    width: 250px;
+    width: clamp(150px, 25vw, 250px);
     height: auto;
     object-fit: contain;  
 }
@@ -233,18 +257,22 @@ header {
    display: flex;
    align-items: center;
    justify-content: space-between;
-  
+
    background-color: aquamarine;
-   width: 320px;
-   height: 80px;
+   width: min(320px, 100%);
+   min-height: 80px;
+   height: auto;
    border: 4px solid white; 
    padding: 10px;
    border-radius: 20px;
    cursor: pointer;
 }
 
+
 .upgrade-img {
     width: 64px; /* precisa ser n^2 para não ficar todo feio no site*/
+    height: auto;
+    flex-shrink: 0;
 }
 
 .upgrade-img.comprado {
@@ -291,6 +319,36 @@ header {
 .braco-img:hover {
     opacity: 0.9;
     cursor: pointer;
+}
+
+.right-section {
+    grid-area: direita;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 100%;
+    min-height: 300px;
+    height: 100%;
+
+    padding: 15px;
+    border-radius: 15px;
+
+    background-color: #b38282;
+}
+
+.categoria-titulo {
+    grid-area: titulo-direita;
+
+    justify-self: center;
+    align-self: end;
+
+    font-size: clamp(20px, 2vw, 28px);
+    text-align: center;
+
+    margin-bottom: 5px;
 }
 
 
@@ -379,27 +437,65 @@ header {
     cursor: pointer;
 }
 
-.game h1 {
-    position: absolute;
-    top: 14%;
-    left: 125px;
+.loja-titulo {
+    grid-area: titulo;
+
+    position: static;
+
+    justify-self: center;
+    align-self: end;
+
+    font-size: clamp(20px, 2vw, 28px);
+    text-align: center;
+
+    margin-bottom: 5px;
 }
 
 #lojaUpgrades {
-    background-color:burlywood;
-    border: 4px solid white; 
-    border-radius: 15px;
-    padding: 20px;
+    grid-area: loja;
+}
 
-    
-    
-    width: 380px;
-    height: 50vh;
+.mid-section {
+    grid-area: personagem;
+}
+
+.right-section {
+    grid-area: direita;
+}
+
+.botom-section {
+    display: none;
+}
+
+#lojaUpgrades {
+    grid-area: loja;
+
+    justify-self: center;
+    align-self: start;
+
+    background-color: burlywood;
+    border: 4px solid white;
+    border-radius: 15px;
+    padding: 15px;
+
+    width: 100%;
+    max-width: 380px;
+
+    height: min(55vh, 500px);
+    min-height: 250px;
+
     overflow-y: auto;
 
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     gap: 10px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 /* Opcional: Esconder a barra de rolagem da loja */
@@ -411,4 +507,216 @@ header {
     -ms-overflow-style: none;
 
     scrollbar-width: none;
+}
+
+.right-section {
+    grid-area: direita;
+
+    justify-self: center;
+    align-self: start;
+
+    background-color: burlywood;
+    border: 4px solid white;
+    border-radius: 15px;
+    padding: 15px;
+
+    width: 100%;
+    max-width: 380px;
+
+    height: min(55vh, 500px);
+    min-height: 250px;
+
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+}
+
+.right-section {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    -ms-overflow-style: none;
+
+    scrollbar-width: none;
+}
+
+/* TABLETS */
+@media (max-width: 1024px) {
+
+    .game {
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .mid-section {
+        transform: translateY(0);
+    }
+
+    .mid-section h3 {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+
+    .barra-prog-rebirth {
+    position: relative;
+    overflow: hidden;
+
+    width: clamp(180px, 25vw, 350px);
+    min-width: 180px;
+    height: 30px;
+
+    flex: 0 0 auto;
+
+    border-radius: 8px;
+    background-color: gray;
+    cursor: pointer;
+}
+
+    #lojaUpgrades {
+        width: 280px;
+    }
+
+    .right-section {
+        width: 280px;
+    }
+}
+
+
+/* CELULARES */
+@media (max-width: 768px) {
+
+    header {
+        grid-template-columns: auto 1fr auto;
+        padding: 5px 10px;
+    }
+
+    .header-mid {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    gap: 15px;
+    min-width: 0;
+}
+
+    #rebirth-moeda {
+        width: auto;
+    }
+
+    .botoes {
+        min-width: 60px;
+        font-size: 11px;
+    }
+
+    /* TABLETS */
+@media (max-width: 1024px) {
+
+    .game {
+        grid-template-columns: minmax(200px, 0.8fr) minmax(0, 1.5fr);
+
+        grid-template-areas:
+            "titulo personagem"
+            "loja personagem"
+            "direita direita";
+    }
+
+    .mid-section {
+        min-height: 450px;
+    }
+
+    #lojaUpgrades {
+        max-width: none;
+        height: 400px;
+    }
+
+    .right-section {
+        max-width: none;
+        height: 400px;
+    }
+}
+
+
+/* CELULARES */
+@media (max-width: 600px) {
+
+    header {
+        grid-template-columns: auto 1fr auto;
+        padding: 5px 8px;
+    }
+
+    .header-mid {
+        gap: 5px;
+    }
+
+    .barra-prog-rebirth {
+        width: clamp(100px, 25vw, 180px);
+        min-width: 100px;
+    }
+
+    .rebirth-trofeu {
+        width: 25px;
+        height: 25px;
+    }
+
+    .header-left,
+    .header-right {
+        gap: 5px;
+    }
+
+    .botoes {
+        min-width: 0;
+        padding: 0 7px;
+        font-size: 11px;
+    }
+
+    .logo img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .game {
+        grid-template-columns: minmax(0, 1fr);
+
+        grid-template-rows: auto auto auto auto;
+
+        grid-template-areas:
+            "titulo"
+            "personagem"
+            "loja"
+            "direita";
+
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .mid-section {
+        min-height: 400px;
+        height: auto;
+    }
+
+    .boneco-image {
+        width: clamp(140px, 45vw, 200px);
+    }
+
+    #lojaUpgrades {
+        max-width: none;
+        height: 350px;
+    }
+
+    .right-section {
+        max-width: none;
+        height: 350px;
+    }
+}
+
 }
