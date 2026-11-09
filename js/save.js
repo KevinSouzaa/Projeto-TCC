@@ -26,6 +26,8 @@ function salvarJogo() {
         },
 
         upgrades: {},
+        grupos: {},
+        grupoAtivo: grupoAtivo,
         upgradesComprados: upgradesComprados,
         musculoGerado: estatisticas.moeda.MusculoGerado
     };
@@ -36,6 +38,10 @@ function salvarJogo() {
             nivel: upgrades[id].nivel,
             moedasPorSegundo: upgrades[id].moedasPorSegundo
         };
+    }
+
+    for (const id in gruposMusculares) {
+        save.grupos[id] = { nivel: gruposMusculares[id].nivel, xp: gruposMusculares[id].xp };
     }
 
     // o localStorage só guarda texto, então transformamos o objeto em texto (JSON)
@@ -76,6 +82,20 @@ function carregarJogo() {
         }
     }
 
+    // grupos musculares (saves antigos não têm esse campo)
+    if (save.grupos) {
+        for (const id in save.grupos) {
+            if (gruposMusculares[id]) {
+                gruposMusculares[id].nivel = save.grupos[id].nivel;
+                gruposMusculares[id].xp = save.grupos[id].xp || 0;
+                atualizarTelaGrupo(id);
+            }
+        }
+        if (gruposMusculares[save.grupoAtivo]) {
+            escolherGrupo(save.grupoAtivo);
+        }
+    }
+
     for (const id of save.upgradesComprados) {
         if (upgrades[id]) {
             mostrarNovoUpgrade();
@@ -89,6 +109,7 @@ function carregarJogo() {
     }
 
     atualizarTelaClick();
+    atualizarTelaRebirth();
     atualizarProgressoRebirth();
 }
 
