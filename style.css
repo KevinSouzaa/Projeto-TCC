@@ -1,11 +1,23 @@
 /* Reseta os padrões de estilização de box do navegador */
-* { margin: 0; 
-    padding: 0; 
-    box-sizing: border-box;  
+:root {
+    --bc-ink: #30251f;
+    --bc-wood-dark: #493326;
+    --bc-wood: #684832;
+    --bc-wood-light: #8b6242;
+    --bc-cream: #f0dfbd;
+    --bc-cream-light: #f8edda;
+    --bc-gold: #e3b85b;
+    --bc-gold-light: #f4d98d;
+    --bc-outline: #2f241e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
 }
-
 
 body {
     display: grid;
@@ -17,26 +29,24 @@ body {
     overflow-x: hidden;
 }
 
-
-/* HEADER SECTION  START*/
+/* HEADER SECTION  START */
 
 header {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-
     position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
-
     width: 100%;
     min-height: 60px;
     height: auto;
     box-sizing: border-box;
     padding: 5px 2%;
-
-    background-color: rgb(255, 255, 255, 0.65);
+    background-color: var(--bc-wood-dark);
+    border-bottom: 3px solid var(--bc-ink);
+    box-shadow: 0 3px 0 rgba(47, 36, 30, 0.28);
 }
 
 .header-left,
@@ -44,14 +54,10 @@ header {
 .header-right {
     display: flex;
     align-items: center;
-
     height: 100%;
 }
 
-
 .header-left {
-    display: flex;
-    align-items: center;
     justify-self: start;
     gap: 10px;
 }
@@ -61,82 +67,86 @@ header {
     align-items: center;
 }
 
-.logo img{
+.logo img {
     height: 32px;
     width: 32px;
     object-fit: contain;
 }
 
 .header-mid {
-    display: flex;
-    align-items: center;
     gap: clamp(5px, 2vw, 20px);
 }
 
-#rebirth-moeda{
+#rebirth-moeda {
     white-space: nowrap;
     flex-shrink: 0;
-
     width: 120px;
+
+    /*Estilização do texto do rebirth*/
+    color: var(--bc-cream-light);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-shadow: 1px 1px 0 var(--bc-ink);
 }
 
-#rebirth-moeda img{
+#rebirth-moeda img {
     text-align: left;
 }
 
 .header-right {
-    display: flex;
-    align-items: center;
     justify-self: end;
-
-    gap: 10px; 
+    gap: 10px;
 }
 
 .botoes {
     height: 30px;
     min-width: 80px;
     padding: 0 10px;
-
-    border-radius: 10%;
+    border-radius: 2px;
     cursor: pointer;
+    /*Estilização dos botões do header*/
+    color: var(--bc-cream-light);
+    background-color: var(--bc-wood);
+    border: 2px solid var(--bc-ink);
+    box-shadow:
+        inset 0 0 0 1px rgba(240, 223, 189, 0.22),
+        0 2px 0 rgba(25, 18, 14, 0.55);
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    transition:
+        background-color 120ms steps(2, end),
+        color 120ms steps(2, end),
+        transform 100ms steps(2, end),
+        box-shadow 100ms steps(2, end);
+}
 
-    color: aliceblue;
-    background-color: rgb(13, 19, 17);
+/*Efeito e clariadade ao passar o mouse por cima*/
+.botoes:hover {
+    color: #fff4d7;
+    background-color: var(--bc-wood-light);
+    box-shadow:
+        inset 0 0 0 1px rgba(248, 237, 218, 0.35),
+        0 3px 0 rgba(25, 18, 14, 0.55);
+    transform: translateY(-1px);
+}
+
+/*Efeito escuro ao clicar*/
+.botoes:active {
+    background-color: var(--bc-wood-dark);
+    box-shadow: inset 0 2px 0 rgba(25, 18, 14, 0.35);
+    transform: translateY(1px);
 }
 
 
-
-/* HEADER SECTION END */
-
-/* MAIN SECTION START*/
-
-.game {
-    display: grid;
-
-    grid-template-columns: 1fr 2fr 1fr;
-
-    grid-template-rows: auto auto;
-
-    grid-template-areas:
-    "titulo personagem titulo-direita"
-    "loja personagem direita";
-
-    width: 100%;
-    min-height: calc(100dvh - 60px);
-
-    gap: 10px;
-    padding: 20px;
-
-    box-sizing: border-box;
-    margin-top: 60px;
-
-    align-items: start;
+.botoes:focus-visible,
+.barra-prog-rebirth:focus-visible {
+    outline: 2px solid var(--bc-gold-light);
+    outline-offset: 3px;
 }
 
-/* MAIN SECTION END*/
-
-/* RIGHT SECTION START*/
-
+/* REBIRTH E TROFÉU */
 .rebirth-status {
     display: flex;
     align-items: center;
@@ -151,82 +161,130 @@ header {
     height: 35px;
 }
 
+.rebirth-trofeu {
+    filter: drop-shadow(1px 2px 0 rgba(25, 18, 14, 0.55));
+}
+
 .barra-prog-rebirth {
     position: relative;
     overflow: hidden;
-
     width: 350px;
     min-width: 250px;
     height: 30px;
-
     flex-shrink: 0;
-
-    border-radius: 8px;
-    background-color: gray;
     cursor: pointer;
+    background-color: #332b29;
+    border: 2px solid #211b19;
+    border-radius: 3px;
+    box-shadow:
+        inset 0 0 0 1px rgba(240, 223, 189, 0.28),
+        0 2px 0 rgba(25, 18, 14, 0.5);
 }
 
-#preenchimento-rebirth{
+#preenchimento-rebirth {
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
     width: 0%;
-    transition: width 0.2s;
-    background-color: blue;
+    background-color: var(--bc-gold);
+    border-right: 2px solid #9b6c2e;
+    transition: width 220ms steps(5, end);
 }
 
-.barra-prog-rebirth h4{
+.barra-prog-rebirth h4 {
     position: absolute;
     width: 100%;
     height: 100%;
     margin: 0;
-    display: flex; 
+    display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
-    color: white;
-}
-
-@keyframes pulsarBrilho {
-    0% { 
-        box-shadow: 0 0 5px blue; 
-        transform: scale(1);
-    }
-    50% { 
-        box-shadow: 0 0 25px cyan; 
-        transform: scale(1.05);
-    }
-    100% { 
-        box-shadow: 0 0 5px blue; 
-        transform: scale(1);
-    }
+    color: #fff3d2;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-shadow: 1px 1px 0 #493326;
+    pointer-events: none;
 }
 
 .barra-prog-rebirth.pronto {
-    animation: pulsarBrilho 1.5s infinite; 
-    border: 3px solid cyan; 
+    border-color: var(--bc-gold-light);
+    animation: rebirth-pronto 1.4s steps(2, end) infinite;
 }
 
+@keyframes rebirth-pronto {
+    0%, 100% {
+        box-shadow: inset 0 0 0 1px rgba(240, 223, 189, 0.28), 0 2px 0 rgba(25, 18, 14, 0.5);
+    }
+    50% {
+        box-shadow: inset 0 0 0 1px rgba(244, 217, 141, 0.75), 0 0 0 2px rgba(227, 184, 91, 0.45);
+    }
+}
+
+/* MAIN SECTION */
+.game {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+    "titulo personagem titulo-direita"
+    "loja personagem direita";
+    width: 100%;
+    min-height: calc(100dvh - 60px);
+    gap: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 60px;
+    align-items: start;
+}
+
+/* Estilização dos títulos da loja e categoria e nível */
+.loja-titulo,
+.categoria-titulo {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 700;
+    color: var(--bc-cream-light);
+    text-shadow:
+        1px 1px 0 var(--bc-ink),
+        2px 2px 0 rgba(47, 36, 30, 0.45);
+    letter-spacing: 0.3px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.loja-titulo {
+    grid-area: titulo;
+    position: static;
+    justify-self: center;
+    align-self: end;
+}
+
+.categoria-titulo {
+    grid-area: titulo-direita;
+    justify-self: center;
+    align-self: end;
+}
+
+/* MID SECTION */
 .mid-section {
     grid-area: personagem;
-
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     background-image: url('sprites/background/back-groud_1.jpg');
     background-size: cover; /* Faz a imagem preencher todo o espaço do container */
     background-position: center; /* Centraliza a imagem */
     background-repeat: no-repeat; /* Evita que a imagem se repita caso seja pequena */
-
     width: 100%;
     min-height: 500px;
     height: 100%;
-
-    margin: 0;
+    margin: 5px;
     transform: none;
     border-radius: 15px;
 }
@@ -237,22 +295,24 @@ header {
     margin-bottom: 50px;
 }
 
+.mid-section h4 {
+    margin: 10px 0 10px 0;
+    font-size: 25px;
+}
+
 .moeda {
-    background-color: rgba(0, 0, 0, 0.6); /* Fundo preto com 60% de opacidade */
-    padding: 10px 25px; /* Espaço ao redor do texto e ícone */
-    border-radius: 12px; /* Bordas arredondadas */
-    color: white; /* Muda a cor do texto para branco */
-    border: 2px solid rgba(255, 255, 255, 0.8); /* Opcional: Borda branca suave */
-    
-    /* Centraliza o conteúdo dentro da caixa */
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px 25px;
+    border-radius: 12px;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Remove a margem original do h3 para não deformar a nova caixa */
 .moeda h3 {
-    margin: 0; 
+    margin: 0;
 }
 
 .boneco-image {
@@ -260,13 +320,12 @@ header {
     align-items: center;
     width: clamp(150px, 25vw, 250px);
     height: auto;
-    object-fit: contain;  
+    object-fit: contain;
 }
 
 .boneco-image:hover {
     opacity: 0.9;
     cursor: pointer;
-
 }
 
 .boneco-image:active {
@@ -274,67 +333,174 @@ header {
     transform: scale(1.02);
 }
 
-.upgrade {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
+/* BOX E LOJA */
+#lojaUpgrades {
+    grid-area: loja;
+    justify-self: center;
+    align-self: start;
+    width: 100%;
+    max-width: 380px;
+    height: min(55vh, 500px);
+    min-height: 250px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #8b6242;
+    border: 3px solid #493326;
+    border-radius: 4px;
+    box-shadow:
+        inset 0 0 0 2px #b88a5c,
+        3px 3px 0 rgba(47, 36, 30, 0.3);
+    padding: 12px;
+    gap: 12px;
+}
+#lojaUpgrades::-webkit-scrollbar { display: none; }
+#lojaUpgrades { -ms-overflow-style: none; scrollbar-width: none; }
 
-   background-color: aquamarine;
-   width: min(320px, 100%);
-   min-height: 80px;
-   height: auto;
-   border: 4px solid white; 
-   padding: 10px;
-   border-radius: 20px;
-   cursor: pointer;
+.right-section {
+    grid-area: direita;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 250px;
+    height: min(55vh, 500px);
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #b38282;
+    max-width: 380px;
+    overflow-y: auto;
+    justify-self: center;
+    align-self: start;
+    gap: 10px;
+}
+.right-section::-webkit-scrollbar { display: none; }
+.right-section { -ms-overflow-style: none; scrollbar-width: none; }
+
+#categoria {
+    background-color: #8b6242;
+    border: 3px solid #493326;
+    border-radius: 4px;
+    box-shadow:
+        inset 0 0 0 2px #b88a5c,
+        3px 3px 0 rgba(47, 36, 30, 0.3);
 }
 
+/* UPGRADES */
+.upgrade {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: min(320px, 100%);
+    cursor: pointer;
+    background-color: #f0dfbd;
+    border: 3px solid #493326;
+    border-radius: 3px;
+    box-shadow:
+        inset 0 0 0 1px #fff1d4,
+        2px 2px 0 rgba(47, 36, 30, 0.25);
+    padding: 8px;
+    min-height: 82px;
+    height: auto;
+    transition:
+        background-color 120ms steps(2, end),
+        transform 100ms steps(2, end),
+        box-shadow 100ms steps(2, end);
+}
+
+.upgrade:hover {
+    background-color: #f8edda;
+    transform: translateY(-2px);
+    box-shadow:
+        inset 0 0 0 1px #fff8e9,
+        2px 4px 0 rgba(47, 36, 30, 0.3);
+}
+
+.upgrade:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 2px 3px rgba(47, 36, 30, 0.2);
+}
+
+/* Estilização na compra do item. Deixa a box do upgrade levemente mais clara*/
+.upgrade:has(.upgrade-img.comprado) {
+    background-color: #f5e8c9;
+    border-color: #a77a35;
+    box-shadow:
+        inset 0 0 0 1px #fff3d5,
+        2px 2px 0 rgba(47, 36, 30, 0.3);
+}
+
+/* box do Upgrade */
+.upgrade-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 65px;
+    min-width: 65px;
+    height: 65px;
+    background-color: #dfc69c;
+    border: 2px solid #8b6242;
+    border-radius: 2px;
+}
 
 .upgrade-img {
-    width: 64px; /* precisa ser n^2 para não ficar todo feio no site*/
-    height: auto;
+    width: 55px; /* precisa ser n^2 para não ficar todo feio no site*/
+    height: 55px;
+    object-fit: contain;
+    image-rendering: pixelated;
     flex-shrink: 0;
 }
 
 .upgrade-img.comprado {
-    /* use "steps(1)" no lugar de "ease-in-out" para fazer ela mais rigida*/
-    animation: bob 2s ease-in-out infinite;
+    animation: bob 2s steps(4, end) infinite;
 }
 
 @keyframes bob {
-    0%, 100%    { transform: translateY(2px); }
-    50%         { transform: translateY(-2px); }    
+    0%, 100% { transform: translateY(2px); }
+    50%      { transform: translateY(-2px); }
 }
 
-/* RIGHT SECTION END*/
-
-/* MID SECTION START*/
-.mid-section h4{
-    margin: 0px;
-    margin-bottom: 10px;
-    font-size:25px;
-    margin-top: 10px;
+.upgrade-info {
+    flex: 1;
+    min-width: 0;
+    color: #30251f;
 }
 
-
-.mid-section {
-    margin: 5px;
-    border-radius: 15px;
+.upgrade-info h4 {
+    margin: 0 0 7px 0;
+    color: #493326;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: left;
 }
 
 .preco-info {
     display: flex;
-    gap: 5px;
     align-items: center;
+    gap: 5px;
+    color: #684832;
+    font-size: 15px;
+    font-weight: 700;
 }
 
-.preco-braco {
-    width: 20px;
+.preco-info p {
+    margin: 0;
 }
 
+.preco-info span {
+    color: #a45e24;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.preco-braco,
 .braco-img {
     width: 20px;
     height: 20px;
+    object-fit: contain;
 }
 
 .braco-img:hover {
@@ -342,73 +508,36 @@ header {
     cursor: pointer;
 }
 
-.right-section {
-    grid-area: direita;
-
+/* Box do nível do upgrade */
+.upgrade-level {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-
-    width: 100%;
-    min-height: 300px;
-    height: 100%;
-
-    padding: 15px;
-    border-radius: 15px;
-
-    background-color: #b38282;
+    justify-content: center;
+    min-width: 27px;
+    height: 27px;
+    padding: 3px;
+    color: #fff1d4;
+    background-color: #493326;
+    border: 2px solid #30251f;
+    border-radius: 2px;
+    font-size: 13px;
+    font-weight: bold;
 }
 
-.categoria-titulo {
-    grid-area: titulo-direita;
-
-    justify-self: center;
-    align-self: end;
-
-    font-size: clamp(20px, 2vw, 28px);
-    text-align: center;
-
-    margin-bottom: 5px;
-}
-
-
-
-
-/* MID SECTION END*/
-
-/* LEFT SECTION START*/
-
-/* LEFT SECTION END*/
-
-/* BOTTOM SECTION START*/
-
-/* BOTTOM SECTION END*/
-
-
-
-
+/* CONFIGURAÇÕES */
 #overlay-configuracoes {
-    display: none; /* Escondido por padrão */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6); /* Deixa o fundo do jogo escurinho */
-    z-index: 998; /* Fica acima do jogo */
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 998;
 }
 
-/* Exibe o overlay quando receber a classe mostrar */
 #overlay-configuracoes.mostrar {
     display: block;
-}
-
-#configuracoes.mostrar {
-    display: flex;
-    flex-direction: column; /* Empilha os elementos verticalmente */
-    align-items: center;    /* Centraliza os itens no menu */
-    gap: 10px;              /* Adiciona um espaço uniforme entre os botões */
 }
 
 #configuracoes {
@@ -417,171 +546,141 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-    /* Configurações de Responsividade */
-    width: 90%;             /* Ocupa 90% da tela em dispositivos menores */
-    max-width: 400px;       /* Trava em 400px para não ficar gigante em monitores grandes */
-    box-sizing: border-box; /* Garante que o padding não seja somado ao tamanho total da caixa */
-    max-height: 90vh;       /* Limita a altura a 90% da tela para não cortar em monitores baixos */
-    overflow-y: auto;       /* Adiciona rolagem interna caso tenha muitas opções e passe da altura */
-    
-    padding: 30px;
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background-color: #8b6242;
+    border: 3px solid #493326;
+    border-radius: 5px;
+    box-shadow:
+        inset 0 0 0 2px #b88a5c,
+        4px 4px 0 rgba(47, 36, 30, 0.4);
+    color: #493326;
+    padding: 28px;
+    box-sizing: border-box;
     z-index: 999;
+    image-rendering: pixelated;
+}
+
+#configuracoes.mostrar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#configuracoes h2 {
+    color: #493326;
+    font-family: inherit;
+    text-shadow: 1px 1px #b88a5c;
+    border-bottom: 2px solid #b88a5c;
+    padding-bottom: 12px;
+    margin-bottom: 22px;
 }
 
 #configuracoes button {
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    background-color: aquamarine;
-    width: auto;
-    height: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    min-height: 34px;
+    padding: 6px 14px;
+    line-height: 1.2;
+    white-space: nowrap;
+    margin: 0;
+    font-size: 14px;
+    background-color: #f0dfbd;
+    color: #493326;
+    border: 2px solid #493326;
+    border-radius: 3px;
+    font-family: inherit;
+    font-weight: bold;
+    box-shadow:
+        inset 0 0 0 1px #d2ad78,
+        2px 2px 0 rgba(47, 36, 30, 0.4);
     cursor: pointer;
+    transition: background-color 0.15s ease;
 }
 
-#codigo-save {
+#configuracoes button:hover {
+    background-color: #e5c58d;
+}
+
+#configuracoes button:active {
+    transform: translate(1px, 1px);
+    box-shadow: none;
+}
+
+#configuracoes > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+#configuracoes #btn-fechar-config {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    min-height: 30px;
+    padding: 0;
+    line-height: 1;
+    background-color: #8b6242;
+    color: #f0dfbd;
+    font-size: 16px;
+}
+
+#codigo-save,
+#configuracoes textarea {
+    display: block;
     width: 100%;
     box-sizing: border-box;
-    resize: none;
+    background-color: #f0dfbd;
+    color: #493326;
+    border: 2px solid #493326;
+    border-radius: 3px;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.4;
+    resize: vertical;
+    outline: none;
+    box-shadow: inset 2px 2px 0 rgba(47, 36, 30, 0.15);
 }
 
-#configuracoes #fechar-config {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background-color:red;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
+#configuracoes textarea::placeholder {
+    color: #8b735d;
 }
 
-.loja-titulo {
-    grid-area: titulo;
-
-    position: static;
-
-    justify-self: center;
-    align-self: end;
-
-    font-size: clamp(20px, 2vw, 28px);
-    text-align: center;
-
-    margin-bottom: 5px;
-}
-
-#lojaUpgrades {
-    grid-area: loja;
-}
-
-.mid-section {
-    grid-area: personagem;
-}
-
-.right-section {
-    grid-area: direita;
+#configuracoes textarea:focus {
+    border-color: #d2ad78;
 }
 
 .botom-section {
     display: none;
 }
 
-#lojaUpgrades {
-    grid-area: loja;
-
-    justify-self: center;
-    align-self: start;
-
-    background-color: burlywood;
-    border: 4px solid white;
-    border-radius: 15px;
-    padding: 15px;
-
-    width: 100%;
-    max-width: 380px;
-
-    height: min(55vh, 500px);
-    min-height: 250px;
-
-    overflow-y: auto;
-
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
-
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-/* Opcional: Esconder a barra de rolagem da loja */
-#lojaUpgrades {
-    &::-webkit-scrollbar {
-        display: none;
-    }
-
-    -ms-overflow-style: none;
-
-    scrollbar-width: none;
-}
-
-.right-section {
-    grid-area: direita;
-
-    justify-self: center;
-    align-self: start;
-
-    background-color: burlywood;
-    border: 4px solid white;
-    border-radius: 15px;
-    padding: 15px;
-
-    width: 100%;
-    max-width: 380px;
-
-    height: min(55vh, 500px);
-    min-height: 250px;
-
-    overflow-y: auto;
-
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
-
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-
-}
-
-.right-section {
-    &::-webkit-scrollbar {
-        display: none;
-    }
-
-    -ms-overflow-style: none;
-
-    scrollbar-width: none;
-}
+/* RESPONSIVIDADE E ACESSIBILIDADE */
 
 /* TABLETS */
 @media (max-width: 1024px) {
-
     .game {
         gap: 10px;
         padding: 15px;
+        grid-template-columns: minmax(200px, 0.8fr) minmax(0, 1.5fr);
+        grid-template-areas:
+            "titulo personagem"
+            "loja personagem"
+            "direita direita";
     }
 
     .mid-section {
         transform: translateY(0);
+        min-height: 450px;
     }
 
     .mid-section h3 {
@@ -590,45 +689,37 @@ header {
     }
 
     .barra-prog-rebirth {
-    position: relative;
-    overflow: hidden;
-
-    width: clamp(180px, 25vw, 350px);
-    min-width: 180px;
-    height: 30px;
-
-    flex: 0 0 auto;
-
-    border-radius: 8px;
-    background-color: gray;
-    cursor: pointer;
-}
+        width: clamp(180px, 25vw, 350px);
+        min-width: 180px;
+    }
 
     #lojaUpgrades {
         width: 280px;
+        max-width: none;
+        height: 400px;
     }
 
     .right-section {
         width: 280px;
+        max-width: none;
+        height: 400px;
     }
 }
 
-
-/* CELULARES */
+/* CELULARES - 768px */
 @media (max-width: 768px) {
-
     header {
         grid-template-columns: auto 1fr auto;
         padding: 5px 10px;
     }
 
     .header-mid {
-    display: flex;
-    align-items: center;
-    justify-self: center;
-    gap: 15px;
-    min-width: 0;
-}
+        display: flex;
+        align-items: center;
+        justify-self: center;
+        gap: 15px;
+        min-width: 0;
+    }
 
     #rebirth-moeda {
         width: auto;
@@ -638,38 +729,10 @@ header {
         min-width: 60px;
         font-size: 11px;
     }
-
-    /* TABLETS */
-@media (max-width: 1024px) {
-
-    .game {
-        grid-template-columns: minmax(200px, 0.8fr) minmax(0, 1.5fr);
-
-        grid-template-areas:
-            "titulo personagem"
-            "loja personagem"
-            "direita direita";
-    }
-
-    .mid-section {
-        min-height: 450px;
-    }
-
-    #lojaUpgrades {
-        max-width: none;
-        height: 400px;
-    }
-
-    .right-section {
-        max-width: none;
-        height: 400px;
-    }
 }
 
-
-/* CELULARES */
+/* CELULARES - 600px */
 @media (max-width: 600px) {
-
     header {
         grid-template-columns: auto 1fr auto;
         padding: 5px 8px;
@@ -707,15 +770,12 @@ header {
 
     .game {
         grid-template-columns: minmax(0, 1fr);
-
         grid-template-rows: auto auto auto auto;
-
         grid-template-areas:
             "titulo"
             "personagem"
             "loja"
             "direita";
-
         padding: 10px;
         gap: 15px;
     }
@@ -740,4 +800,155 @@ header {
     }
 }
 
+/* ACESSIBILIDADE */
+@media (prefers-reduced-motion: reduce) {
+    .botoes,
+    #preenchimento-rebirth,
+    .upgrade,
+    .upgrade-img.comprado {
+        transition: none;
+        animation: none;
+    }
+
+    .barra-prog-rebirth.pronto {
+        animation: none;
+    }
+}
+
+/* ===== Estilos dos recursos novos, no mesmo tema ===== */
+
+/* Valor do clique no cabeçalho */
+.click-status {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.click-status h3 {
+    color: var(--bc-cream-light);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-shadow: 1px 1px 0 var(--bc-ink);
+}
+
+/* "Rende: X/s" nos upgrades */
+.upgrade-rendimento {
+    margin-top: 4px;
+    color: #684832;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.upgrade-rendimento span {
+    color: #2e7d4f;
+    font-weight: 800;
+}
+
+/* Grupos musculares (Categoria e Nível) */
+#categoria {
+    gap: 12px;
+    padding: 12px;
+}
+
+.grupo {
+    width: min(320px, 100%);
+    padding: 8px;
+    cursor: pointer;
+    background-color: #f0dfbd;
+    border: 3px solid #493326;
+    border-radius: 3px;
+    box-shadow:
+        inset 0 0 0 1px #fff1d4,
+        2px 2px 0 rgba(47, 36, 30, 0.25);
+    transition:
+        background-color 120ms steps(2, end),
+        transform 100ms steps(2, end);
+}
+
+.grupo:hover {
+    background-color: #f8edda;
+    transform: translateY(-2px);
+}
+
+.grupo:active {
+    transform: translateY(1px);
+}
+
+/* Grupo que está recebendo XP */
+.grupo.ativo {
+    background-color: #f5e8c9;
+    border-color: var(--bc-gold);
+    box-shadow:
+        inset 0 0 0 1px #fff3d5,
+        0 0 0 2px rgba(227, 184, 91, 0.55),
+        2px 2px 0 rgba(47, 36, 30, 0.3);
+}
+
+.grupo-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.grupo-topo h4 {
+    margin: 0;
+    color: #493326;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.grupo-nivel {
+    color: #fff1d4;
+    background-color: #493326;
+    border: 2px solid #30251f;
+    border-radius: 2px;
+    padding: 2px 6px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.grupo-barra {
+    position: relative;
+    height: 22px;
+    overflow: hidden;
+    background-color: #332b29;
+    border: 2px solid #211b19;
+    border-radius: 3px;
+}
+
+.grupo-barra-preenchimento {
+    height: 100%;
+    width: 0%;
+    background-color: var(--bc-gold);
+    border-right: 2px solid #9b6c2e;
+    transition: width 220ms steps(5, end);
+}
+
+.grupo-barra-texto {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff3d2;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-shadow: 1px 1px 0 #493326;
+}
+
+.grupo-bonus {
+    margin-top: 6px;
+    color: #684832;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .grupo,
+    .grupo-barra-preenchimento {
+        transition: none;
+    }
 }

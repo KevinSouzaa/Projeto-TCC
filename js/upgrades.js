@@ -1,12 +1,12 @@
 const upgrades = {
     frango: {
         nome: "Frango",
-        custo: 10,
+        custo: 15,
         nivel: 0,
 
-        multiplicadorCusto: 1.3,
-        moedasPorSegundo: 1,
-        multiplicadorMoedasPorSegundo: 1.15,
+        multiplicadorCusto: 1.15,
+        moedasPorSegundo: 0.2,
+        multiplicadorMoedasPorSegundo: 1,
 
         locking: "sprites/upgrades/frango_lock.png",
         img: "sprites/upgrades/frango_1.png"
@@ -17,9 +17,9 @@ const upgrades = {
         custo: 100,
         nivel: 0,
 
-        multiplicadorCusto: 1.3,
-        moedasPorSegundo: 10,
-        multiplicadorMoedasPorSegundo: 1.15,
+        multiplicadorCusto: 1.15,
+        moedasPorSegundo: 1,
+        multiplicadorMoedasPorSegundo: 1,
 
         locking: "sprites/upgrades/ovo_bloqueado.png",
         img: "sprites/upgrades/ovo.png",
@@ -27,12 +27,12 @@ const upgrades = {
 
     halterInfantil: {
         nome: "Halter Infantil",
-        custo: 1000,
+        custo: 1100,
         nivel: 0,
 
-        multiplicadorCusto: 1.3,
-        moedasPorSegundo: 50,
-        multiplicadorMoedasPorSegundo: 1.15,
+        multiplicadorCusto: 1.15,
+        moedasPorSegundo: 8,
+        multiplicadorMoedasPorSegundo: 1,
 
         locking: "sprites/upgrades/HALTER_INFANTIL_lock.png",
         img: "sprites/upgrades/HALTER_INFANTIL_1.png"
@@ -40,12 +40,12 @@ const upgrades = {
 
     garrafaAgua: {
         nome: "Garrafa de Água",
-        custo: 10000,
+        custo: 12000,
         nivel: 0,
 
-        multiplicadorCusto: 1.3,
-        moedasPorSegundo: 500,
-        multiplicadorMoedasPorSegundo: 1.15,
+        multiplicadorCusto: 1.15,
+        moedasPorSegundo: 47,
+        multiplicadorMoedasPorSegundo: 1,
 
         locking: "sprites/upgrades/GARRAFA_AGUA_lock.png",
         img: "sprites/upgrades/garrafa_agua_1.png"
@@ -53,12 +53,12 @@ const upgrades = {
 
     personalAcademia: {
         nome: "Personal Academia",
-        custo: 50000,
+        custo: 130000,
         nivel: 0,
 
-        multiplicadorCusto: 1.3,
-        moedasPorSegundo: 1500,
-        multiplicadorMoedasPorSegundo: 1.15,
+        multiplicadorCusto: 1.15,
+        moedasPorSegundo: 260,
+        multiplicadorMoedasPorSegundo: 1,
 
         locking: "sprites/upgrades/Personam_academia_lock.png",
         img: "sprites/upgrades/Personam_academia_1.png"
@@ -66,12 +66,12 @@ const upgrades = {
 
     BarraV: {
         nome: "Barra V",
-        custo: 100000,
+        custo: 1400000,
         nivel: 0,
 
-        multiplicadorCusto: 1.3,
-        moedasPorSegundo: 10000,
-        multiplicadorMoedasPorSegundo: 1.5,
+        multiplicadorCusto: 1.15,
+        moedasPorSegundo: 1400,
+        multiplicadorMoedasPorSegundo: 1,
 
         moedaTricepsPorSegundo: 1,
 
@@ -80,7 +80,8 @@ const upgrades = {
     }
 };
 
-
+// Cópia dos valores iniciais, usada para resetar os upgrades no rebirth
+const upgradesIniciais = JSON.parse(JSON.stringify(upgrades));
 
 const upgradesLateral = ["frango"];
 
@@ -101,6 +102,7 @@ function mostrarNovoUpgrade() {
                             <p>Preço: <span id="preco-${upgrade}">${upgrades[upgrade].custo}</span> </p>
                             <img src="sprites/moedas/braco.png" alt="" class="braco-img">
                         </div>
+                        <p class="upgrade-rendimento">Rende: <span id="rendimento-${upgrade}">0</span>/s</p>
                     </div>
 
                     <div class="upgrade-level">
