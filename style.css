@@ -217,7 +217,10 @@ header {
     align-items: center;
     justify-content: center;
 
-    background-color: aqua;
+    background-image: url('sprites/background/back-groud_1.jpg');
+    background-size: cover; /* Faz a imagem preencher todo o espaço do container */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita que a imagem se repita caso seja pequena */
 
     width: 100%;
     min-height: 500px;
@@ -232,6 +235,24 @@ header {
     text-align: center;
     font-size: 30px;
     margin-bottom: 50px;
+}
+
+.moeda {
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo preto com 60% de opacidade */
+    padding: 10px 25px; /* Espaço ao redor do texto e ícone */
+    border-radius: 12px; /* Bordas arredondadas */
+    color: white; /* Muda a cor do texto para branco */
+    border: 2px solid rgba(255, 255, 255, 0.8); /* Opcional: Borda branca suave */
+    
+    /* Centraliza o conteúdo dentro da caixa */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Remove a margem original do h3 para não deformar a nova caixa */
+.moeda h3 {
+    margin: 0; 
 }
 
 .boneco-image {
