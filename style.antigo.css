@@ -1,0 +1,825 @@
+/* Reseta os padrões de estilização de box do navegador */
+* { margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;  
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+
+body {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-color: #b38282;
+    user-select: none;
+    overflow-x: hidden;
+}
+
+
+/* HEADER SECTION  START*/
+
+header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    width: 100%;
+    min-height: 60px;
+    height: auto;
+    box-sizing: border-box;
+    padding: 5px 2%;
+
+    background-color: rgb(255, 255, 255, 0.65);
+}
+
+.header-left,
+.header-mid,
+.header-right {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+}
+
+
+.header-left {
+    display: flex;
+    align-items: center;
+    justify-self: start;
+    gap: 10px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+}
+
+.header-mid {
+    display: flex;
+    align-items: center;
+    gap: clamp(5px, 2vw, 20px);
+}
+
+#rebirth-moeda{
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    width: 120px;
+}
+
+#rebirth-moeda img{
+    text-align: left;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-self: end;
+
+    gap: 10px; 
+}
+
+.botoes {
+    height: 30px;
+    min-width: 80px;
+    padding: 0 10px;
+
+    border-radius: 10%;
+    cursor: pointer;
+
+    color: aliceblue;
+    background-color: rgb(13, 19, 17);
+}
+
+
+
+/* HEADER SECTION END */
+
+/* MAIN SECTION START*/
+
+.game {
+    display: grid;
+
+    grid-template-columns: 1fr 2fr 1fr;
+
+    grid-template-rows: auto auto;
+
+    grid-template-areas:
+    "titulo personagem titulo-direita"
+    "loja personagem direita";
+
+    width: 100%;
+    min-height: calc(100dvh - 60px);
+
+    gap: 10px;
+    padding: 20px;
+
+    box-sizing: border-box;
+    margin-top: 60px;
+
+    align-items: start;
+}
+
+/* MAIN SECTION END*/
+
+/* RIGHT SECTION START*/
+
+.rebirth-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.braco-image,
+.rebirth-trofeu {
+    left: 50px;
+    width: 35px;
+    height: 35px;
+}
+
+.barra-prog-rebirth {
+    position: relative;
+    overflow: hidden;
+
+    width: 350px;
+    min-width: 250px;
+    height: 30px;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+    background-color: gray;
+    cursor: pointer;
+}
+
+#preenchimento-rebirth{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    transition: width 0.2s;
+    background-color: blue;
+}
+
+.barra-prog-rebirth h4{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    color: white;
+}
+
+@keyframes pulsarBrilho {
+    0% { 
+        box-shadow: 0 0 5px blue; 
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 0 0 25px cyan; 
+        transform: scale(1.05);
+    }
+    100% { 
+        box-shadow: 0 0 5px blue; 
+        transform: scale(1);
+    }
+}
+
+.barra-prog-rebirth.pronto {
+    animation: pulsarBrilho 1.5s infinite; 
+    border: 3px solid cyan; 
+}
+
+.mid-section {
+    grid-area: personagem;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-image: url('sprites/background/back-groud_1.jpg');
+    background-size: cover; /* Faz a imagem preencher todo o espaço do container */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita que a imagem se repita caso seja pequena */
+
+    width: 100%;
+    min-height: 500px;
+    height: 100%;
+
+    margin: 0;
+    transform: none;
+    border-radius: 15px;
+}
+
+.mid-section h3 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+.moeda {
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo preto com 60% de opacidade */
+    padding: 10px 25px; /* Espaço ao redor do texto e ícone */
+    border-radius: 12px; /* Bordas arredondadas */
+    color: white; /* Muda a cor do texto para branco */
+    border: 2px solid rgba(255, 255, 255, 0.8); /* Opcional: Borda branca suave */
+    
+    /* Centraliza o conteúdo dentro da caixa */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Remove a margem original do h3 para não deformar a nova caixa */
+.moeda h3 {
+    margin: 0; 
+}
+
+.boneco-image {
+    display: block;
+    align-items: center;
+    width: clamp(150px, 25vw, 250px);
+    height: auto;
+    object-fit: contain;  
+}
+
+.boneco-image:hover {
+    opacity: 0.9;
+    cursor: pointer;
+
+}
+
+.boneco-image:active {
+    opacity: 0.8;
+    transform: scale(1.02);
+}
+
+.upgrade {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+
+   background-color: aquamarine;
+   width: min(320px, 100%);
+   min-height: 80px;
+   height: auto;
+   border: 4px solid white; 
+   padding: 10px;
+   border-radius: 20px;
+   cursor: pointer;
+}
+
+
+.upgrade-img {
+    width: 64px; /* precisa ser n^2 para não ficar todo feio no site*/
+    height: auto;
+    flex-shrink: 0;
+}
+
+.upgrade-img.comprado {
+    /* use "steps(1)" no lugar de "ease-in-out" para fazer ela mais rigida*/
+    animation: bob 2s ease-in-out infinite;
+}
+
+@keyframes bob {
+    0%, 100%    { transform: translateY(2px); }
+    50%         { transform: translateY(-2px); }    
+}
+
+/* RIGHT SECTION END*/
+
+/* MID SECTION START*/
+.mid-section h4{
+    margin: 0px;
+    margin-bottom: 10px;
+    font-size:25px;
+    margin-top: 10px;
+}
+
+
+.mid-section {
+    margin: 5px;
+    border-radius: 15px;
+}
+
+.preco-info {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.preco-braco {
+    width: 20px;
+}
+
+.braco-img {
+    width: 20px;
+    height: 20px;
+}
+
+.braco-img:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.right-section {
+    grid-area: direita;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 100%;
+    min-height: 300px;
+    height: 100%;
+
+    padding: 15px;
+    border-radius: 15px;
+
+    background-color: #b38282;
+}
+
+.categoria-titulo {
+    grid-area: titulo-direita;
+
+    justify-self: center;
+    align-self: end;
+
+    font-size: clamp(20px, 2vw, 28px);
+    text-align: center;
+
+    margin-bottom: 5px;
+}
+
+
+
+
+/* MID SECTION END*/
+
+/* LEFT SECTION START*/
+
+/* LEFT SECTION END*/
+
+/* BOTTOM SECTION START*/
+
+/* BOTTOM SECTION END*/
+
+
+
+
+#overlay-configuracoes {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* Deixa o fundo do jogo escurinho */
+    z-index: 998; /* Fica acima do jogo */
+}
+
+/* Exibe o overlay quando receber a classe mostrar */
+#overlay-configuracoes.mostrar {
+    display: block;
+}
+
+#configuracoes.mostrar {
+    display: flex;
+    flex-direction: column; /* Empilha os elementos verticalmente */
+    align-items: center;    /* Centraliza os itens no menu */
+    gap: 10px;              /* Adiciona um espaço uniforme entre os botões */
+}
+
+#configuracoes {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* Configurações de Responsividade */
+    width: 90%;             /* Ocupa 90% da tela em dispositivos menores */
+    max-width: 400px;       /* Trava em 400px para não ficar gigante em monitores grandes */
+    box-sizing: border-box; /* Garante que o padding não seja somado ao tamanho total da caixa */
+    max-height: 90vh;       /* Limita a altura a 90% da tela para não cortar em monitores baixos */
+    overflow-y: auto;       /* Adiciona rolagem interna caso tenha muitas opções e passe da altura */
+    
+    padding: 30px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+}
+
+#configuracoes button {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background-color: aquamarine;
+    width: auto;
+    height: 25px;
+    cursor: pointer;
+}
+
+#codigo-save {
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+}
+
+#configuracoes #fechar-config {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color:red;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.loja-titulo {
+    grid-area: titulo;
+
+    position: static;
+
+    justify-self: center;
+    align-self: end;
+
+    font-size: clamp(20px, 2vw, 28px);
+    text-align: center;
+
+    margin-bottom: 5px;
+}
+
+#lojaUpgrades {
+    grid-area: loja;
+}
+
+.mid-section {
+    grid-area: personagem;
+}
+
+.right-section {
+    grid-area: direita;
+}
+
+.botom-section {
+    display: none;
+}
+
+#lojaUpgrades {
+    grid-area: loja;
+
+    justify-self: center;
+    align-self: start;
+
+    background-color: burlywood;
+    border: 4px solid white;
+    border-radius: 15px;
+    padding: 15px;
+
+    width: 100%;
+    max-width: 380px;
+
+    height: min(55vh, 500px);
+    min-height: 250px;
+
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Opcional: Esconder a barra de rolagem da loja */
+#lojaUpgrades {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    -ms-overflow-style: none;
+
+    scrollbar-width: none;
+}
+
+.right-section {
+    grid-area: direita;
+
+    justify-self: center;
+    align-self: start;
+
+    background-color: burlywood;
+    border: 4px solid white;
+    border-radius: 15px;
+    padding: 15px;
+
+    width: 100%;
+    max-width: 380px;
+
+    height: min(55vh, 500px);
+    min-height: 250px;
+
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+}
+
+.right-section {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    -ms-overflow-style: none;
+
+    scrollbar-width: none;
+}
+
+/* TABLETS */
+@media (max-width: 1024px) {
+
+    .game {
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .mid-section {
+        transform: translateY(0);
+    }
+
+    .mid-section h3 {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+
+    .barra-prog-rebirth {
+    position: relative;
+    overflow: hidden;
+
+    width: clamp(180px, 25vw, 350px);
+    min-width: 180px;
+    height: 30px;
+
+    flex: 0 0 auto;
+
+    border-radius: 8px;
+    background-color: gray;
+    cursor: pointer;
+}
+
+    #lojaUpgrades {
+        width: 280px;
+    }
+
+    .right-section {
+        width: 280px;
+    }
+}
+
+
+/* CELULARES */
+@media (max-width: 768px) {
+
+    header {
+        grid-template-columns: auto 1fr auto;
+        padding: 5px 10px;
+    }
+
+    .header-mid {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    gap: 15px;
+    min-width: 0;
+}
+
+    #rebirth-moeda {
+        width: auto;
+    }
+
+    .botoes {
+        min-width: 60px;
+        font-size: 11px;
+    }
+
+    /* TABLETS */
+@media (max-width: 1024px) {
+
+    .game {
+        grid-template-columns: minmax(200px, 0.8fr) minmax(0, 1.5fr);
+
+        grid-template-areas:
+            "titulo personagem"
+            "loja personagem"
+            "direita direita";
+    }
+
+    .mid-section {
+        min-height: 450px;
+    }
+
+    #lojaUpgrades {
+        max-width: none;
+        height: 400px;
+    }
+
+    .right-section {
+        max-width: none;
+        height: 400px;
+    }
+}
+
+
+/* CELULARES */
+@media (max-width: 600px) {
+
+    header {
+        grid-template-columns: auto 1fr auto;
+        padding: 5px 8px;
+    }
+
+    .header-mid {
+        gap: 5px;
+    }
+
+    .barra-prog-rebirth {
+        width: clamp(100px, 25vw, 180px);
+        min-width: 100px;
+    }
+
+    .rebirth-trofeu {
+        width: 25px;
+        height: 25px;
+    }
+
+    .header-left,
+    .header-right {
+        gap: 5px;
+    }
+
+    .botoes {
+        min-width: 0;
+        padding: 0 7px;
+        font-size: 11px;
+    }
+
+    .logo img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .game {
+        grid-template-columns: minmax(0, 1fr);
+
+        grid-template-rows: auto auto auto auto;
+
+        grid-template-areas:
+            "titulo"
+            "personagem"
+            "loja"
+            "direita";
+
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .mid-section {
+        min-height: 400px;
+        height: auto;
+    }
+
+    .boneco-image {
+        width: clamp(140px, 45vw, 200px);
+    }
+
+    #lojaUpgrades {
+        max-width: none;
+        height: 350px;
+    }
+
+    .right-section {
+        max-width: none;
+        height: 350px;
+    }
+}
+
+}
+
+/* GRUPOS MUSCULARES (Categoria e Nível) */
+.right-section {
+    gap: 10px;
+}
+
+.grupo {
+    background-color: aquamarine;
+    width: min(320px, 100%);
+    border: 4px solid white;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.grupo.ativo {
+    border-color: gold;
+    box-shadow: 0 0 10px gold;
+}
+
+.grupo-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.grupo-topo h4 {
+    margin: 0 0 6px 0;
+}
+
+.grupo-nivel {
+    font-weight: bold;
+}
+
+.grupo-barra {
+    position: relative;
+    height: 22px;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 11px;
+    overflow: hidden;
+}
+
+.grupo-barra-preenchimento {
+    height: 100%;
+    width: 0%;
+    background-color: #2e8b57;
+    transition: width 0.3s;
+}
+
+.grupo-barra-texto {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 3px black;
+}
+
+.grupo-bonus {
+    margin: 6px 0 0 0;
+    font-size: 13px;
+}
+
+
+/* Rendimento por segundo dos upgrades e valor do clique */
+.upgrade-rendimento {
+    margin: 4px 0 0 0;
+    font-size: 13px;
+}
+
+.click-status {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.click-status h3 {
+    margin: 0;
+}
