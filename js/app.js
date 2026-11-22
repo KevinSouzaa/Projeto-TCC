@@ -84,6 +84,16 @@ function atualizarTelaUpgrade(idDoUpgrade) {
     atualizarTelaClick();
 }
 
+function atualizarRendimentoTotal() {
+    const elemento = document.getElementById("valor-rendimento-total");
+
+    if (!elemento) return;
+
+    elemento.textContent = moeda.Musculo.porSegundo.toLocaleString("pt-BR", {
+        maximumFractionDigits: 3
+    });
+}
+
 function atualizarTelaRebirth(){
     document.querySelector('.moeda-rebirth').textContent = moeda.Rebirth.total;
 }
@@ -191,6 +201,7 @@ function comprarUpgrade(idDoUpgrade, valorSelecionado = 1) {
         efeito_compra.play()
 
         atualizarTelaUpgrade(idDoUpgrade);
+        atualizarRendimentoTotal();
 
         if (!upgradesComprados.includes(idDoUpgrade)) {
             mostrarNovoUpgrade();
