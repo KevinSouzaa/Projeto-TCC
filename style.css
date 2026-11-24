@@ -977,3 +977,113 @@ header {
         transition: none;
     }
 }
+
+/* ESTATÍSTICAS */
+#overlay-estatisticas {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 998;
+}
+
+#overlay-estatisticas.mostrar {
+    display: block;
+}
+
+#estatisticas {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background-color: #8b6242;
+    border: 3px solid #493326;
+    border-radius: 5px;
+    box-shadow:
+        inset 0 0 0 2px #b88a5c,
+        4px 4px 0 rgba(47, 36, 30, 0.4);
+    color: #493326;
+    padding: 28px;
+    box-sizing: border-box;
+    z-index: 999;
+    image-rendering: pixelated;
+}
+
+#estatisticas.mostrar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#estatisticas h2 {
+    color: #493326;
+    font-family: inherit;
+    text-shadow: 1px 1px #b88a5c;
+    border-bottom: 2px solid #b88a5c;
+    padding-bottom: 12px;
+    margin-bottom: 22px;
+}
+
+#estatisticas button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    min-height: 34px;
+    padding: 6px 14px;
+    line-height: 1.2;
+    white-space: nowrap;
+    margin: 0;
+    font-size: 14px;
+    background-color: #f0dfbd;
+    color: #493326;
+    border: 2px solid #493326;
+    border-radius: 3px;
+    font-family: inherit;
+    font-weight: bold;
+    box-shadow:
+        inset 0 0 0 1px #d2ad78,
+        2px 2px 0 rgba(47, 36, 30, 0.4);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+#estatisticas button:hover {
+    background-color: #e5c58d;
+}
+
+#estatisticas button:active {
+    transform: translate(1px, 1px);
+    box-shadow: none;
+}
+
+#estatisticas > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+#estatisticas #btn-fechar-estatisticas {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    min-height: 30px;
+    padding: 0;
+    line-height: 1;
+    background-color: #8b6242;
+    color: #f0dfbd;
+    font-size: 16px;
+}

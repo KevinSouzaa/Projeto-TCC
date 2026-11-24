@@ -34,17 +34,3 @@ function fecharMenu(){
 btn_AbrirConfig.addEventListener("click", abrirMenu);
 btn_fecharConfig.addEventListener("click", fecharMenu);
 
-
-//Estatisitcas
-
-const upgradesComprados = []
-
-
-const estatisticas ={
-    moeda:{
-        MusculoGerado: 0
-    }
-}
-
-
-
